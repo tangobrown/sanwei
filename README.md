@@ -1,0 +1,117 @@
+# Sanwei Asia
+
+The redesigned sanwei-asia.com, built from the `design_handoff_sanwei_website`
+handoff. Next.js (App Router) + TypeScript + Tailwind CSS v4, statically
+generated apart from the contact endpoint.
+
+## Running it
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
+```
+
+Copy `.env.example` to `.env.local` and fill in `POSTMARK_SERVER_TOKEN` before
+the contact form can deliver anything.
+
+## Routes
+
+| Route | Page |
+| --- | --- |
+| `/` | Homepage |
+| `/industries/[slug]` | Audio, Automotive, Marine, Other Industries |
+| `/services/[slug]` | The nine services |
+| `/gallery` | Gallery, with `?industry=` and `?page=` in the query |
+| `/why-sanwei` | About |
+| `/process` | Process |
+| `/contact` | Contact |
+| `/api/contact` | Postmark route handler |
+
+301s from the live site's old URLs (`/audio`, `/about-us`, `/our-process`, and
+the rest) are declared in `next.config.ts`.
+
+## How it is put together
+
+```
+src/
+  app/          routes, the API handler, sitemap and robots
+  components/
+    layout/     header (with the mobile panel) and footer
+    sections/   the reusable bands: hero, intro splits, hairline lists, CTAs
+    ui/         primitives: image slots, icons, buttons, the hairline grid
+    gallery/    the filter-and-paginate browser
+    about/      the team carousel
+    contact/    the form and the office map
+  content/      all copy, as typed data
+  lib/          the contact schema and small helpers
+```
+
+**Design tokens** live in `src/app/globals.css` under `@theme`, so Tailwind
+utilities like `bg-ink` and `text-steel` come straight from the handoff's
+palette. Display type uses `clamp()` through the `t-*` classes in the same
+file rather than per-breakpoint overrides.
+
+**The content layer** (`src/content/`) holds every piece of copy. It is taken
+verbatim from the prototypes, including the house style of no em dashes.
+Changing wording means editing those files, not the components.
+
+**Hairline list bands** draw their dividing rules from the grid's own 1px gap
+over a rule-coloured ground, with every cell painted opaque, so the rules stay
+correct at any column count. `HairlineGrid` adds the filler cells needed to
+complete a part-filled last row, which would otherwise show the ground as a
+solid block.
+
+## Photography
+
+Every photograph is still a placeholder. `<ImageSlot>` renders the grey box
+with its art-direction brief visible and swaps to `next/image` the moment it
+is given a `src`. `docs/photo-brief.md` lists all 112 outstanding shots and is
+regenerated with:
+
+```bash
+npm run photo-brief
+```
+
+## Contact form
+
+The form posts JSON to `/api/contact`, which validates with zod, checks a
+honeypot, applies a small per-instance rate limit, and calls Postmark
+server-side. The server token is read only inside the route handler and never
+reaches the client. With no token configured the endpoint returns an error and
+the form shows its error state with the phone numbers as a fallback.
+
+Form states: idle, submitting, success and error, all built.
+
+## Outstanding for the client
+
+1. Real photography for every slot (`docs/photo-brief.md`).
+2. SVG logos, light and dark. The current PNGs are 165x132 and too small for retina.
+3. Destinations for the four footer document links, and for the "code of
+   conduct" and "terms and conditions" links on the Quality Control page. They
+   point at `/contact` for now.
+4. The Postmark server token and the destination address for enquiries.
+5. Map provider preference. OpenStreetMap embeds are in place behind
+   `OfficeMap`, so swapping to Google or Mapbox is a one-file change. The exact
+   UK address is still "Axminster, East Devon".
+6. Certification details on the proof strip.
+7. Favicon and OG images, which were not designed.
+
+## Notes on the handoff
+
+Two places where the handoff's prose and its prototypes disagree; the
+prototypes won, since the handoff states copy is final and verbatim:
+
+- The proof strip reads "20+ Years supplying OEMs" in the prototype, where the
+  overview prose says "30+ years".
+- The team member is "Andy Cobbold" in the prototype, "Andy Cobbald" in the
+  prose.
+
+One place where the prose won: the homepage H1 is set at up to 112px per the
+type scale, where the prototype file uses 88px.
+
+The Other Industries page has no "why choose us" band; it goes intro to
+industry specialisms, as the prototype does. The three photographs on the
+process page are additions, made to satisfy the handoff's "alternating
+imagery" note for that page, and are flagged as such in the photo brief.

@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colour tokens, per the design handoff */
+  --color-ink: #263746;
+  --color-ink-deep: #1d2b36;
+  --color-ink-soft: #43586a;
+  --color-ink-mute: #4e6474;
+  --color-steel: #5e839b;
+  --color-steel-light: #9db3c2;
+  --color-accent: #d84242;
+  --color-accent-soft: #f0918c;
+  --color-paper: #f3f5f6;
+  --color-paper-tint: #eaeef1;
+  --color-rule: #d6dee3;
+  --color-rule-soft: #dfe6ea;
+  --color-rule-strong: #c9d4db;
+  --color-rule-muted: #b8c6d0;
+  --color-rule-dark: #3e5364;
+  --color-on-dark: #f3f5f6;
+  --color-on-dark-dim: #c3d2dc;
+  --color-on-dark-soft: #dde6ec;
+  --color-on-dark-body: #eaf1f6;
+  --color-card: #fafbfc;
+  --color-slot: #dce4e9;
+  --color-disabled: #a9b8c4;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  /* Border radius is 0 everywhere; pills are the single exception. */
+  --radius-pill: 100px;
+}
+
+:root {
+  /* Content column gutter: 56px desktop, 40px at lg, 24px at md and below. */
+  --gutter: 56px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Visible focus ring on every interactive element. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-steel);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /*
+   * The 1200px content column. Implemented as a padding expression so that
+   * full-bleed coloured bands run edge to edge while their contents stay on
+   * the column.
+   */
+  .pad-x {
+    padding-inline: max(var(--gutter), calc((100% - 1200px) / 2));
+  }
+
+  .col-1200 {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /* Display type. Scales with clamp() rather than per-breakpoint overrides. */
+  .t-hero-home {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 112px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+
+  .t-hero {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+
+  .t-page-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(38px, 7vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+
+  .t-h2-major {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(30px, 4.6vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
+  .t-h2-minor {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
+  .t-h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.12;
+    text-wrap: pretty;
+  }
+
+  .t-hero-sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.6vw, 34px);
+    line-height: 1.2;
+    text-wrap: pretty;
+  }
+
+  .t-statement {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 3vw, 38px);
+    line-height: 1.22;
+    text-wrap: pretty;
+  }
+
+  .t-statement-sm {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.6vw, 32px);
+    line-height: 1.25;
+    text-wrap: pretty;
+  }
+
+  .t-eyebrow {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .t-eyebrow-sm {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .t-label {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .t-lead {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .t-body {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* Section vertical rhythm: 88-104px desktop, 56px at md, 44px at sm. */
+  .section-y {
+    padding-block: 88px;
+  }
+
+  .section-y-lg {
+    padding-block: 104px;
+  }
+
+  @media (max-width: 768px) {
+    .section-y,
+    .section-y-lg {
+      padding-block: 56px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section-y,
+    .section-y-lg {
+      padding-block: 44px;
+    }
+  }
+
+  /*
+   * Hairline list band. The dividing rules are drawn by the grid itself
+   * (1px gap over a rule-coloured ground, opaque cells) so they stay correct
+   * at any column count.
+   */
+  .hairline-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--color-rule);
+  }
+
+  .hero-scrim {
+    background: radial-gradient(
+      135% 120% at 0% 100%,
+      rgba(20, 30, 39, 0.94) 0%,
+      rgba(20, 30, 39, 0.82) 22%,
+      rgba(20, 30, 39, 0.55) 46%,
+      rgba(20, 30, 39, 0.22) 70%,
+      rgba(20, 30, 39, 0.04) 100%
+    );
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 420ms ease both;
+}
