@@ -38,6 +38,7 @@ export default function HomePage() {
       <IntroSplit
         heading="Need a quality assembly, component or proprietary part for your project?"
         statement="We'll make it for you. Or we'll source the exact part your specification requires."
+        statementPosition="right"
         paragraphs={[
           "Our factory in Taiwan and extensive Asian sourcing network can supply you with parts that fit your project scope. Whether you know exactly what you need or require some expert advice, our decades of experience, eye for detail and project management know-how will be delivered to you on time and on brief as standard.",
           "Sanwei supplies some of the most prestigious Automotive, Marine and Audio companies around the globe, working to rigorous quality standards so that you receive superior parts within your budget.",

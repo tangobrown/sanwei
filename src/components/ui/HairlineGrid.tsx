@@ -12,10 +12,13 @@ type Columns = { base: number; sm: number; lg: number };
 export function HairlineGrid({
   columns,
   className = "",
+  fillerClassName = "bg-paper",
   children,
 }: {
   columns: Columns;
   className?: string;
+  /** Must match the cells' own fill, or the completed row will show through. */
+  fillerClassName?: string;
   children: ReactNode[];
 }) {
   const count = children.length;
@@ -30,7 +33,7 @@ export function HairlineGrid({
     <div className={`hairline-grid ${className}`}>
       {children}
       {Array.from({ length: fillerCount }, (_, i) => (
-        <div key={`filler-${i}`} aria-hidden="true" className={`bg-paper ${fillerClass(i, missing)}`} />
+        <div key={`filler-${i}`} aria-hidden="true" className={`${fillerClassName} ${fillerClass(i, missing)}`} />
       ))}
     </div>
   );

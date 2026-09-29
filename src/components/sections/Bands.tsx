@@ -13,13 +13,21 @@ export function IntroSplit({
   paragraphs,
   links,
   narrowRight = false,
+  statementPosition = "left",
 }: {
   heading: string;
   statement?: string;
   paragraphs: string[];
   links?: { label: string; href: string; accent?: boolean }[];
   narrowRight?: boolean;
+  /**
+   * Where the accent italic statement sits. Under the heading by default; the
+   * homepage runs it at the head of the right-hand column instead, where it
+   * reads as a lead-in to the body copy and so sets a size smaller.
+   */
+  statementPosition?: "left" | "right";
 }) {
+  const statementOnRight = statementPosition === "right";
   return (
     <section
       className={`pad-x grid items-start gap-12 pb-[72px] pt-[88px] max-md:pb-14 max-md:pt-14 max-sm:pb-11 max-sm:pt-11 lg:gap-20 ${
@@ -27,10 +35,15 @@ export function IntroSplit({
       }`}
     >
       <div>
-        <h2 className="t-h2-major mb-[18px]">{heading}</h2>
-        {statement ? <p className="t-statement max-w-[620px] text-accent">{statement}</p> : null}
+        <h2 className={`t-h2-major ${statement && !statementOnRight ? "mb-[18px]" : ""}`}>{heading}</h2>
+        {statement && !statementOnRight ? (
+          <p className="t-statement max-w-[620px] text-accent">{statement}</p>
+        ) : null}
       </div>
       <div className="flex flex-col gap-[22px] pt-[10px]">
+        {statement && statementOnRight ? (
+          <p className="font-display text-[clamp(20px,2.4vw,30px)] italic leading-[1.25] text-accent">{statement}</p>
+        ) : null}
         {paragraphs.map((paragraph) => (
           <p key={paragraph} className="t-body text-ink-soft">
             {paragraph}
