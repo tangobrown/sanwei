@@ -128,4 +128,52 @@ one that is not still renders the grey placeholder with its brief showing.
   to satisfy the handoff's "alternating imagery" note for that page. Drop them if
   the client would rather the sequence stayed typographic.
 - Team portraits should be near-square and consistently lit across all six people.
-- Hero images are used at up to 2560px wide; supply them at 2x.
+- See Resolution below: every supplied photograph is currently too small for a
+  full-bleed hero, and most are too small for a split panel too.
+
+## Resolution
+
+A full-bleed hero needs about **2560px** wide to stay sharp on a
+modern display; a half-width split panel needs about **1440px**.
+Next.js never upscales past the source file, so anything narrower is stretched
+by the browser and looks soft. Raising the encoder quality does not help: the
+detail is not in the file. These have to be re-supplied larger.
+
+Team portraits and the three-up cards are the exception: they render at about
+380px wide, so roughly **760px** is enough for them. The hero and panel columns
+below do not apply to the `team-*` files.
+
+| File | Supplied | Big enough for a hero? | For a split panel? |
+| --- | --- | --- | --- |
+| team-michael-ling.jpg | 400x500 | no (needs 2560px) | no (needs 1440px) |
+| team-moulder-chen.jpg | 400x500 | no (needs 2560px) | no (needs 1440px) |
+| team-portrait-pending.jpg | 400x500 | no (needs 2560px) | no (needs 1440px) |
+| team-sam-cheng.jpg | 400x500 | no (needs 2560px) | no (needs 1440px) |
+| team-tiny-lee.jpg | 400x500 | no (needs 2560px) | no (needs 1440px) |
+| tool-exploded-cad.jpg | 749x927 | no (needs 2560px) | no (needs 1440px) |
+| audio-mixing-desk.jpg | 800x857 | no (needs 2560px) | no (needs 1440px) |
+| body-in-white-line.jpg | 800x830 | no (needs 2560px) | no (needs 1440px) |
+| cad-motor-assembly.jpg | 800x722 | no (needs 2560px) | no (needs 1440px) |
+| cad-workstation.jpg | 800x800 | no (needs 2560px) | no (needs 1440px) |
+| container-ship-aerial.jpg | 800x914 | no (needs 2560px) | no (needs 1440px) |
+| drawing-review.jpg | 800x794 | no (needs 2560px) | no (needs 1440px) |
+| engineers-test-bench.jpg | 800x756 | no (needs 2560px) | no (needs 1440px) |
+| machining-hall.jpg | 800x830 | no (needs 2560px) | no (needs 1440px) |
+| project-engineer-desk.jpg | 800x796 | no (needs 2560px) | no (needs 1440px) |
+| speaker-test-rig.jpg | 800x850 | no (needs 2560px) | no (needs 1440px) |
+| tool-assembled-cad.jpg | 800x700 | no (needs 2560px) | no (needs 1440px) |
+| tool-crated.jpg | 800x700 | no (needs 2560px) | no (needs 1440px) |
+| tool-finished.jpg | 800x700 | no (needs 2560px) | no (needs 1440px) |
+| vessel-at-quay.jpg | 800x835 | no (needs 2560px) | no (needs 1440px) |
+| warehouse-stock-check.jpg | 800x799 | no (needs 2560px) | no (needs 1440px) |
+| whiteboard-process.jpg | 800x879 | no (needs 2560px) | no (needs 1440px) |
+| car-chassis-rig.jpg | 1000x687 | no (needs 2560px) | no (needs 1440px) |
+| engine-bay-hoses.jpg | 1000x808 | no (needs 2560px) | no (needs 1440px) |
+| ev-skateboard-chassis.jpg | 1000x669 | no (needs 2560px) | no (needs 1440px) |
+| global-logistics.jpg | 1000x662 | no (needs 2560px) | no (needs 1440px) |
+| programme-gantt.jpg | 1000x724 | no (needs 2560px) | no (needs 1440px) |
+| client-meeting.jpg | 1200x740 | no (needs 2560px) | no (needs 1440px) |
+| engineering-office.jpg | 1200x675 | no (needs 2560px) | no (needs 1440px) |
+| project-workshop.jpg | 1200x641 | no (needs 2560px) | no (needs 1440px) |
+| grinding-sparks.jpg | 1400x805 | no (needs 2560px) | no (needs 1440px) |
+| line-overview.jpg | 1400x512 | no (needs 2560px) | no (needs 1440px) |

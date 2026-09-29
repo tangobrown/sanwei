@@ -6,6 +6,36 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+/** Intrinsic pixel size of a JPEG or PNG, read from its header. */
+function intrinsicSize(buffer) {
+  if (buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) {
+    return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
+  }
+  let offset = 2;
+  while (offset < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+    const marker = buffer[offset + 1];
+    // SOF0, SOF1, SOF2, SOF3 carry the frame dimensions.
+    if (marker >= 0xc0 && marker <= 0xc3) {
+      return { height: buffer.readUInt16BE(offset + 5), width: buffer.readUInt16BE(offset + 7) };
+    }
+    offset += 2 + buffer.readUInt16BE(offset + 2);
+  }
+  return null;
+}
+
+/*
+ * What each kind of slot needs, at 2x for a 1280px-wide layout. Next never
+ * upscales past the source, so a file narrower than this is stretched by the
+ * browser and looks soft. Nothing server-side fixes that; the file has to be
+ * re-supplied larger.
+ */
+const HERO_MIN_WIDTH = 2560;
+const PANEL_MIN_WIDTH = 1440;
+
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SRC = path.join(ROOT, "src");
 
@@ -103,9 +133,43 @@ const lines = [
   "  to satisfy the handoff's \"alternating imagery\" note for that page. Drop them if",
   "  the client would rather the sequence stayed typographic.",
   "- Team portraits should be near-square and consistently lit across all six people.",
-  "- Hero images are used at up to 2560px wide; supply them at 2x.",
+  "- See Resolution below: every supplied photograph is currently too small for a",
+  "  full-bleed hero, and most are too small for a split panel too.",
   "",
 ];
+
+// Resolution audit of what has actually been supplied.
+const photographyDir = path.join(ROOT, "public/photography");
+const supplied = [];
+for (const name of (await readdir(photographyDir)).sort()) {
+  const size = intrinsicSize(await readFile(path.join(photographyDir, name)));
+  if (size) supplied.push({ name, ...size });
+}
+supplied.sort((a, b) => a.width - b.width);
+
+lines.push(
+  "## Resolution",
+  "",
+  `A full-bleed hero needs about **${HERO_MIN_WIDTH}px** wide to stay sharp on a`,
+  "modern display; a half-width split panel needs about " + `**${PANEL_MIN_WIDTH}px**.`,
+  "Next.js never upscales past the source file, so anything narrower is stretched",
+  "by the browser and looks soft. Raising the encoder quality does not help: the",
+  "detail is not in the file. These have to be re-supplied larger.",
+  "",
+  "Team portraits and the three-up cards are the exception: they render at about",
+  "380px wide, so roughly **760px** is enough for them. The hero and panel columns",
+  "below do not apply to the `team-*` files.",
+  "",
+  "| File | Supplied | Big enough for a hero? | For a split panel? |",
+  "| --- | --- | --- | --- |",
+  ...supplied.map(
+    (photo) =>
+      `| ${photo.name} | ${photo.width}x${photo.height} | ${
+        photo.width >= HERO_MIN_WIDTH ? "yes" : `no (needs ${HERO_MIN_WIDTH}px)`
+      } | ${photo.width >= PANEL_MIN_WIDTH ? "yes" : `no (needs ${PANEL_MIN_WIDTH}px)`} |`,
+  ),
+  "",
+);
 
 await writeFile(path.join(ROOT, "docs/photo-brief.md"), lines.join("\n"));
 console.log(`Wrote docs/photo-brief.md with ${sorted.length} shots.`);
