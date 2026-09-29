@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "@/components/ui/Icons";
 import { industryLinks, offices, serviceLinks } from "@/content/site";
 
 const plainLinks = [
@@ -115,12 +116,10 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
                 className={`${rowClass} w-full text-left`}
               >
                 {section.label}
-                <span
-                  aria-hidden="true"
-                  className={`text-[12px] transition-transform duration-[180ms] ${isOpen ? "rotate-180" : ""}`}
-                >
-                  &#9662;
-                </span>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 transition-transform duration-[180ms] ${isOpen ? "rotate-180" : ""}`}
+                />
               </button>
               {isOpen ? (
                 <div className="border-b border-rule py-2">

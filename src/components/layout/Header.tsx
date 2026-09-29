@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { industryLinks, serviceLinks } from "@/content/site";
+import { ChevronDown } from "@/components/ui/Icons";
 import { MobileNav } from "./MobileNav";
 
 type MenuKey = "industries" | "services";
@@ -128,9 +129,10 @@ export function Header() {
                   className={`inline-flex items-center gap-[7px] ${linkClass(sectionActive(key))}`}
                 >
                   {menu.label}
-                  <span aria-hidden="true" className="text-[10px] leading-none">
-                    &#9662;
-                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`shrink-0 transition-transform duration-[180ms] ${expanded ? "rotate-180" : ""}`}
+                  />
                 </button>
 
                 {/* An 18px invisible bridge lets the pointer travel into the panel. */}
