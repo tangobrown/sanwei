@@ -10,6 +10,9 @@
   --color-steel-light: #9db3c2;
   --color-accent: #d84242;
   --color-accent-soft: #f0918c;
+  /* A lighter accent for label text sitting over photography, where
+     accent-soft cannot reach 4.5:1. */
+  --color-accent-pale: #f7b5b0;
   --color-paper: #f3f5f6;
   --color-paper-tint: #eaeef1;
   --color-rule: #d6dee3;
@@ -184,6 +187,15 @@
     font-weight: 600;
     font-size: clamp(20px, 3vw, 38px);
     line-height: 1.22;
+    text-wrap: pretty;
+  }
+
+  .t-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(19px, 2.3vw, 30px);
+    line-height: 1.3;
     text-wrap: pretty;
   }
 

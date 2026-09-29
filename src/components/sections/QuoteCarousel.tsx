@@ -39,29 +39,19 @@ export function QuoteCarousel({ references }: { references: ClientReference[] })
           fill
           sizes="100vw"
           /* Scaled up so the blur's soft edge falls outside the band. */
-          className="-z-20 scale-110 object-cover opacity-35 blur-[14px]"
+          className="-z-10 scale-110 object-cover opacity-30 blur-[14px]"
         />
       ) : null}
 
-      {/*
-       * Scrim, densest on the left where the copy sits and clearing toward the
-       * right so the photograph still reads. Without it the 13px eyebrow and
-       * role labels fall below 4.5:1 against the brighter parts of the image.
-       */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(38,55,70,0.97)_0%,rgba(38,55,70,0.94)_60%,rgba(38,55,70,0.38)_100%)]"
-      />
-
       <div className="pad-x">
         <div className="max-w-[900px]">
-          <p className="t-eyebrow mb-[26px] text-steel-light">Client references</p>
+          <p className="t-eyebrow mb-[26px] text-on-dark-soft">Client references</p>
 
           <figure aria-live="polite">
-            <blockquote key={index} className="t-statement mb-[26px] animate-fade-up">
+            <blockquote key={index} className="t-quote mb-[26px] animate-fade-up">
               &ldquo;{reference.quote}&rdquo;
             </blockquote>
-            <figcaption className="t-label text-accent-soft">{reference.role}</figcaption>
+            <figcaption className="t-label text-accent-pale">{reference.role}</figcaption>
           </figure>
 
           <div className="mt-[38px] flex gap-[10px]">

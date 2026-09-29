@@ -158,7 +158,7 @@ export function ClientReferenceBand({ reference, label = "Client reference" }: {
     <section className="pad-x bg-ink py-[88px] text-on-dark max-md:py-14 max-sm:py-11">
       <figure className="max-w-[900px]">
         <figcaption className="t-eyebrow mb-[26px] text-steel-light">{label}</figcaption>
-        <blockquote className="t-statement mb-[26px] text-on-dark">&ldquo;{reference.quote}&rdquo;</blockquote>
+        <blockquote className="t-quote mb-[26px] text-on-dark">&ldquo;{reference.quote}&rdquo;</blockquote>
         <p className="t-label text-accent-soft">{reference.role}</p>
       </figure>
     </section>
