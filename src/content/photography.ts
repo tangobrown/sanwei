@@ -208,6 +208,16 @@ export const photos: Record<string, Photo> = {
     alt: "Sparks arc away from an angle grinder as a steel section is cut to size.",
   },
 
+  /*
+   * Decorative backdrop behind the client references band. It is blurred and
+   * held at low opacity over the ink ground, so it carries no information and
+   * takes empty alt text.
+   */
+  "Client references backdrop": {
+    src: "/photography/client-meeting.jpg",
+    alt: "",
+  },
+
   // Why Sanwei?
   "Sanwei team on site, wide": {
     src: "/photography/engineering-office.jpg",
