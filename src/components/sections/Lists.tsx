@@ -29,7 +29,7 @@ export function WhyChooseUs({
           {[
             ...points.map((point, i) => (
               <div key={i} className="flex items-baseline gap-[18px] bg-paper px-10 py-[34px] max-md:px-6">
-                <span className="font-serif text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-[17px] leading-[1.5]">{point}</span>
               </div>
             )),
@@ -74,7 +74,7 @@ export function ProcessTriptych({
               } ${i === steps.length - 1 ? "lg:border-none lg:pr-0 max-lg:border-b-0 max-lg:pb-0" : "lg:border-r lg:border-rule-soft"}`}
             >
               <p className="t-eyebrow-sm mb-[14px] text-steel">{step.label}</p>
-              <p className="mb-4 font-serif text-[clamp(26px,3vw,34px)] italic">{step.title}</p>
+              <p className="mb-4 font-display text-[clamp(26px,3vw,34px)] italic">{step.title}</p>
               <p className="text-[15px] leading-[1.75] text-ink-soft">{step.body}</p>
             </div>
           ))}
@@ -94,7 +94,7 @@ export function StatStrip({ stats }: { stats: { value: string; label: string }[]
       <HairlineGrid columns={{ base: 2, sm: 2, lg: 4 }} className="grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="bg-paper p-10 max-md:p-6">
-            <p className="font-serif text-[clamp(40px,5vw,54px)] leading-none">{stat.value}</p>
+            <p className="font-display text-[clamp(40px,5vw,54px)] leading-none">{stat.value}</p>
             <p className="t-label mt-3 text-steel">{stat.label}</p>
           </div>
         ))}

@@ -53,6 +53,19 @@ utilities like `bg-ink` and `text-steel` come straight from the handoff's
 palette. Display type uses `clamp()` through the `t-*` classes in the same
 file rather than per-breakpoint overrides.
 
+**Typography** is one family, Special Gothic: display type at 600 through
+`.font-display` and the `t-*` classes, everything else at 400. This replaces
+the handoff's Instrument Serif and Archivo pairing. Two consequences worth
+knowing:
+
+- Special Gothic ships no italic, so the italic statement lines (hero
+  sublines, the accent pull quotes, the "and" on Project Management) render
+  as a browser-synthesised oblique rather than drawn italics.
+- It sets considerably wider than the serif it replaced, so the hero maxima
+  came down to hold the original line counts: 112px to 92px on the homepage,
+  104px to 88px on interior pages. Every page was re-checked for overflow at
+  1440, 1280, 1024, 768 and 390.
+
 **The content layer** (`src/content/`) holds every piece of copy. It is taken
 verbatim from the prototypes, including the house style of no em dashes.
 Changing wording means editing those files, not the components.

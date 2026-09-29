@@ -25,8 +25,8 @@
   --color-slot: #dce4e9;
   --color-disabled: #a9b8c4;
 
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-special-gothic), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-special-gothic), ui-sans-serif, system-ui, sans-serif;
 
   /* Border radius is 0 everywhere; pills are the single exception. */
   --radius-pill: 100px;
@@ -93,6 +93,12 @@
 }
 
 @layer components {
+  /* Display type: the family and its 600 weight travel together. */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
   /*
    * The 1200px content column. Implemented as a padding expression so that
    * full-bleed coloured bands run edge to edge while their contents stay on
@@ -109,27 +115,28 @@
   }
 
   /* Display type. Scales with clamp() rather than per-breakpoint overrides. */
+  /* Sized for Special Gothic 600, which sets wider than the serif it replaced. */
   .t-hero-home {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(44px, 9vw, 112px);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 7.2vw, 92px);
     line-height: 0.92;
     letter-spacing: -0.02em;
     text-wrap: pretty;
   }
 
   .t-hero {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(44px, 9vw, 104px);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(38px, 6.8vw, 88px);
     line-height: 0.92;
     letter-spacing: -0.02em;
     text-wrap: pretty;
   }
 
   .t-page-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: clamp(38px, 7vw, 76px);
     line-height: 0.98;
     letter-spacing: -0.02em;
@@ -137,8 +144,8 @@
   }
 
   .t-h2-major {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: clamp(30px, 4.6vw, 52px);
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -146,8 +153,8 @@
   }
 
   .t-h2-minor {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: clamp(26px, 3.6vw, 44px);
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -155,35 +162,35 @@
   }
 
   .t-h3 {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: clamp(24px, 3vw, 38px);
     line-height: 1.12;
     text-wrap: pretty;
   }
 
   .t-hero-sub {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     font-size: clamp(20px, 2.6vw, 34px);
     line-height: 1.2;
     text-wrap: pretty;
   }
 
   .t-statement {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     font-size: clamp(20px, 3vw, 38px);
     line-height: 1.22;
     text-wrap: pretty;
   }
 
   .t-statement-sm {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
     font-size: clamp(20px, 2.6vw, 32px);
     line-height: 1.25;
     text-wrap: pretty;

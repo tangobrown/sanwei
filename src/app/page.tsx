@@ -72,7 +72,7 @@ export default function HomePage() {
                 className="h-[300px]"
               />
               <div className="p-8 max-md:p-6">
-                <p className="mb-2 font-serif text-[30px]">{industry.cardTitle}</p>
+                <p className="mb-2 font-display text-[30px]">{industry.cardTitle}</p>
                 <p className="text-[14px] leading-[1.6] text-ink-mute">{industry.cardBody}</p>
               </div>
             </Link>
@@ -83,7 +83,7 @@ export default function HomePage() {
           href="/industries/other-industries"
           className="group mt-5 flex flex-wrap items-center justify-between gap-3 border border-rule bg-card px-8 py-7 transition-colors duration-[180ms] hover:border-ink max-md:px-6"
         >
-          <span className="font-serif text-[28px]">Other industries</span>
+          <span className="font-display text-[28px]">Other industries</span>
           <span className="inline-flex items-center gap-2 text-[15px] text-ink-mute transition-colors duration-[180ms] group-hover:text-accent">
             Need complex, high-quality parts for your manufacturing project? We can help. &rarr;
           </span>

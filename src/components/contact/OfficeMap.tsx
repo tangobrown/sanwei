@@ -17,7 +17,7 @@ export function OfficeMap() {
   return (
     <section className="py-20 max-md:py-14 max-sm:py-11">
       <div className="pad-x mb-10 flex flex-wrap items-center justify-between gap-4">
-        <h2 className="font-serif text-[clamp(26px,3vw,34px)]">Where we are</h2>
+        <h2 className="font-display text-[clamp(26px,3vw,34px)]">Where we are</h2>
         <div className="flex gap-[10px]" role="group" aria-label="Choose an office">
           {(Object.keys(offices) as LocationKey[]).map((key) => {
             const active = key === location;

@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Archivo, Instrument_Serif } from "next/font/google";
+import { Special_Gothic } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const archivo = Archivo({
+/**
+ * One family across the whole site: display type at 600, everything else at
+ * 400. Special Gothic ships no italic, so the italic statement lines render
+ * as a synthesised oblique.
+ */
+const specialGothic = Special_Gothic({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-archivo",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  variable: "--font-special-gothic",
   display: "swap",
 });
 
@@ -40,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${archivo.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={specialGothic.variable}>
       <body className="font-sans">
         <a
           href="#main"

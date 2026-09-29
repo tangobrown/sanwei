@@ -63,7 +63,7 @@ export default function ContactPage() {
             <div className="grid gap-8 pt-6 sm:grid-cols-2">
               {[offices.asia, offices.uk].map((office) => (
                 <div key={office.name}>
-                  <h3 className="mb-3 font-serif text-[28px]">{office.name}</h3>
+                  <h3 className="mb-3 font-display text-[28px]">{office.name}</h3>
                   <address className="text-[15px] not-italic leading-[1.75] text-ink-soft">
                     {office.addressLines.map((line) => (
                       <span key={line} className="block">

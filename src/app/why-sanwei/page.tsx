@@ -123,7 +123,7 @@ export default function WhySanweiPage() {
           <div className="grid gap-10 sm:grid-cols-2">
             {[offices.asia, offices.uk].map((office) => (
               <div key={office.name}>
-                <h2 className="mb-4 font-serif text-[28px]">{office.name}</h2>
+                <h2 className="mb-4 font-display text-[28px]">{office.name}</h2>
                 <address className="text-[15px] not-italic leading-[1.75] text-ink-soft">
                   {office.addressLines.map((line) => (
                     <span key={line} className="block">

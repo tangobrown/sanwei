@@ -11,7 +11,7 @@ export function ServiceDetail({ detail }: { detail: DetailBlock }) {
   return (
     <DetailBand image={{ brief: detail.image }} tone={detail.tone ?? "steel"}>
       {detail.heading ? (
-        <h2 className="mb-[14px] font-serif text-[clamp(26px,3.2vw,36px)] leading-[1.14]">{detail.heading}</h2>
+        <h2 className="mb-[14px] font-display text-[clamp(26px,3.2vw,36px)] leading-[1.14]">{detail.heading}</h2>
       ) : null}
 
       {detail.paragraphs?.map((paragraph) => (
@@ -22,7 +22,7 @@ export function ServiceDetail({ detail }: { detail: DetailBlock }) {
 
       {detail.secondary ? (
         <div className="mt-2">
-          <h3 className="mb-[14px] font-serif text-[clamp(24px,2.6vw,30px)] leading-[1.14]">
+          <h3 className="mb-[14px] font-display text-[clamp(24px,2.6vw,30px)] leading-[1.14]">
             {detail.secondary.heading}
           </h3>
           {detail.secondary.paragraphs.map((paragraph) => (
@@ -63,7 +63,7 @@ export function RiskFactors({ riskFactors }: { riskFactors: NonNullable<Service[
       <HairlineGrid columns={{ base: 1, sm: 2, lg: 3 }} className="sm:grid-cols-2 lg:grid-cols-3">
         {riskFactors.points.map((point, i) => (
           <div key={point} className="flex items-baseline gap-[18px] bg-paper px-10 py-[34px] max-md:px-6">
-            <span className="font-serif text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-display text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
             <span className="text-[17px] leading-[1.5]">{point}</span>
           </div>
         ))}
@@ -102,7 +102,7 @@ export function SolutionBand({ solution }: { solution: NonNullable<Service["solu
       </div>
       <div className="mx-auto flex max-w-[760px] flex-col items-center gap-4">
         <p className="text-[20px] font-bold leading-[1.35]">{solution.first}</p>
-        <p className="font-serif text-[22px] italic text-steel">{solution.conjunction}</p>
+        <p className="font-display text-[22px] italic text-steel">{solution.conjunction}</p>
         <p className="text-[20px] font-bold leading-[1.35]">{solution.second}</p>
       </div>
     </section>
@@ -118,7 +118,7 @@ export function BeyondProducts({ beyond }: { beyond: NonNullable<Service["beyond
       <HairlineGrid columns={{ base: 1, sm: 1, lg: 2 }} className="lg:grid-cols-2">
         {beyond.columns.map((column) => (
           <div key={column.title} className="bg-paper px-10 py-[34px] max-md:px-6">
-            <h3 className="mb-4 font-serif text-[28px]">{column.title}</h3>
+            <h3 className="mb-4 font-display text-[28px]">{column.title}</h3>
             {column.lead ? <p className="mb-3 text-[15px] font-semibold text-ink">{column.lead}</p> : null}
             {column.list ? (
               <ul className="flex flex-col gap-3">

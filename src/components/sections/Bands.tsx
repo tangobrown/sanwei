@@ -220,7 +220,7 @@ export function IndustrySpecialisms() {
               className="h-[220px]"
             />
             <div className="flex items-center justify-between px-7 py-6">
-              <span className="font-serif text-[28px]">{card.label}</span>
+              <span className="font-display text-[28px]">{card.label}</span>
               <ArrowDiagonal size={16} className="shrink-0 transition-colors duration-[180ms] group-hover:text-accent" />
             </div>
           </Link>
@@ -255,7 +255,7 @@ export function PromoCards() {
             i === 0 ? "bg-ink text-on-dark" : "bg-steel text-white"
           }`}
         >
-          <h2 className="mb-[18px] font-serif text-[clamp(26px,3vw,34px)] leading-[1.2]">{card.title}</h2>
+          <h2 className="mb-[18px] font-display text-[clamp(26px,3vw,34px)] leading-[1.2]">{card.title}</h2>
           <p
             className={`mb-7 max-w-[460px] text-[15px] leading-[1.75] ${
               i === 0 ? "text-on-dark-dim" : "text-on-dark-body"

@@ -92,7 +92,7 @@ export function TeamCarousel({ members }: { members: TeamMember[] }) {
                 className="aspect-[4/5]"
               />
               <div className="p-8 max-md:p-6">
-                <h3 className="font-serif text-[clamp(24px,2.4vw,28px)] leading-[1.15]">{member.name}</h3>
+                <h3 className="font-display text-[clamp(24px,2.4vw,28px)] leading-[1.15]">{member.name}</h3>
                 <p className="t-label mt-2 text-steel">{member.role}</p>
                 <div className="mt-4 flex flex-col gap-3">
                   {member.bio.map((paragraph) => (

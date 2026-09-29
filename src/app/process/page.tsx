@@ -40,7 +40,7 @@ export default function ProcessPage() {
             key={step.title}
             className="grid items-start gap-8 border-b border-rule py-12 max-md:py-8 lg:grid-cols-[120px_1fr_1fr] lg:gap-16"
           >
-            <span aria-hidden="true" className="font-serif text-[clamp(44px,5vw,64px)] leading-none text-accent">
+            <span aria-hidden="true" className="font-display text-[clamp(44px,5vw,64px)] leading-none text-accent">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>

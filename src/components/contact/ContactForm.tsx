@@ -65,7 +65,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="flex min-h-[420px] flex-col justify-center border-x border-rule bg-white p-[72px] max-md:border-x-0 max-md:border-t max-md:p-8">
-        <h2 ref={successHeading} tabIndex={-1} className="font-serif text-[clamp(32px,4vw,44px)] outline-none">
+        <h2 ref={successHeading} tabIndex={-1} className="font-display text-[clamp(32px,4vw,44px)] outline-none">
           Thank you.
         </h2>
         <p className="mt-5 max-w-[400px] text-[16px] leading-[1.7] text-ink-soft">
@@ -87,7 +87,7 @@ export function ContactForm() {
 
   return (
     <div className="border-x border-rule bg-white p-[72px] max-md:border-x-0 max-md:border-t max-md:p-8">
-      <h2 className="font-serif text-[clamp(30px,3.6vw,40px)]">Send an enquiry</h2>
+      <h2 className="font-display text-[clamp(30px,3.6vw,40px)]">Send an enquiry</h2>
       <p className="mt-3 text-[15px] text-steel">Fields marked with an asterisk are required.</p>
 
       <form onSubmit={onSubmit} noValidate className="mt-9 flex flex-col gap-[22px]">
