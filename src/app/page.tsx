@@ -94,6 +94,7 @@ export default function HomePage() {
       <ServicesList
         heading="Our services focus on bringing your project to fruition."
         subline="Sanwei really is an extension of your procurement team in Asia."
+        tone="blue"
       />
 
       <QuoteCarousel references={clientReferences} />

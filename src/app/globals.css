@@ -8,6 +8,9 @@
   --color-ink-mute: #4e6474;
   --color-steel: #5e839b;
   --color-steel-light: #9db3c2;
+  /* White on `steel` tops out at 4.04:1, so body-size text cannot reach AA on
+     it. This deeper shade of the same blue carries 18px text at 5.05:1. */
+  --color-steel-deep: #527387;
   --color-accent: #d84242;
   --color-accent-soft: #f0918c;
   /* A lighter accent for label text sitting over photography, where
