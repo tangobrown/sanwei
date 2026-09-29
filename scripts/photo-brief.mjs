@@ -57,30 +57,48 @@ const definitions = gallerySource.slice(
   gallerySource.indexOf("const definitions"),
   gallerySource.indexOf("export const galleryItems"),
 );
+// The industry names lead each pair; only the part names are photographs.
+const galleryIndustryNames = new Set(["Audio", "Automotive", "Marine", "Other industries"]);
 for (const match of definitions.matchAll(/"([^"]+)"/g)) {
   const value = match[1];
+  if (galleryIndustryNames.has(value)) continue;
   if (!found.has(value)) found.set(value, new Set());
   found.get(value).add("src/content/gallery.ts");
 }
 
 const sorted = [...found.entries()].sort(([a], [b]) => a.localeCompare(b));
 
+// Which briefs now have a photograph registered against them.
+const registrySource = await readFile(path.join(SRC, "content/photography.ts"), "utf8");
+const registryBody = registrySource.slice(registrySource.indexOf("export const photos"));
+const filled = new Set();
+for (const match of registryBody.matchAll(/^  (?:"([^"]+)"|([A-Za-z][A-Za-z0-9]*)):\s*\{/gm)) {
+  filled.add(match[1] ?? match[2]);
+}
+
 const lines = [
   "# Photo brief: Sanwei Asia website",
   "",
-  "Every photograph on the site is still a placeholder. Each row below is the",
-  "art-direction brief carried by one `<ImageSlot>`; supplying that component a",
-  "`src` swaps the grey box for a real `next/image`.",
+  "Each row below is the art-direction brief carried by one `<ImageSlot>`.",
+  "A brief listed in `src/content/photography.ts` renders a real `next/image`;",
+  "one that is not still renders the grey placeholder with its brief showing.",
   "",
-  `${sorted.length} distinct shots are outstanding.`,
+  `${sorted.filter(([brief]) => !filled.has(brief)).length} of ${sorted.length} shots are still outstanding.`,
   "",
-  "| Shot | Used in |",
-  "| --- | --- |",
-  ...sorted.map(([brief, where]) => `| ${brief} | ${[...where].sort().join("<br>")} |`),
+  "| Shot | Status | Used in |",
+  "| --- | --- | --- |",
+  ...sorted.map(
+    ([brief, where]) =>
+      `| ${brief} | ${filled.has(brief) ? "supplied" : "**outstanding**"} | ${[...where].sort().join("<br>")} |`,
+  ),
   "",
   "## Notes",
   "",
   "- The gallery needs 40 part photographs, one per item in `src/content/gallery.ts`.",
+  "- Prototyping and Quality Control have no photography at all yet; nothing in the",
+  "  supplied set depicts prototyping or inspection.",
+  "- Real portraits for Andy Cobbold and Gareth Taylor are the highest priority:",
+  "  they lead the team carousel and currently show a generic silhouette.",
   "- The three shots on the process page are not in the prototypes; they were added",
   "  to satisfy the handoff's \"alternating imagery\" note for that page. Drop them if",
   "  the client would rather the sequence stayed typographic.",

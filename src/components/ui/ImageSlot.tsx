@@ -1,14 +1,15 @@
 import Image from "next/image";
+import { getPhoto } from "@/content/photography";
 
 export type ImageSlotProps = {
   /**
    * The art-direction brief for this slot, carried over from the prototypes.
-   * It is shown inside the placeholder and used as the fallback alt text.
+   * It doubles as the lookup key into the photography registry.
    */
   brief: string;
-  /** Real photography. Supplying it swaps the placeholder for a next/image. */
+  /** Overrides the registry, for a one-off image. */
   src?: string;
-  /** Alt text for the real photograph. Defaults to the brief. */
+  /** Overrides the registry's alt text. Pass "" for a decorative image. */
   alt?: string;
   /** Passed to next/image so the browser picks a sensible source width. */
   sizes?: string;
@@ -17,17 +18,28 @@ export type ImageSlotProps = {
 };
 
 /**
- * All photography on the site is still placeholder. Until a real `src` is
- * supplied this renders the grey slot from the prototypes with its brief
- * visible, so the outstanding shots stay legible to whoever is sourcing them.
- *
- * The full list of briefs is exported from `src/lib/photo-brief.ts`.
+ * Renders the photograph registered for this brief. Where none has been
+ * supplied yet it falls back to the grey slot from the prototypes with the
+ * brief showing, so outstanding shots stay visible rather than silently
+ * becoming empty boxes.
  */
 export function ImageSlot({ brief, src, alt, sizes = "100vw", priority, className = "" }: ImageSlotProps) {
-  if (src) {
+  const photo = getPhoto(brief);
+  const resolvedSrc = src ?? photo?.src;
+  const resolvedAlt = alt ?? photo?.alt ?? brief;
+  const contain = photo?.fit === "contain";
+
+  if (resolvedSrc) {
     return (
-      <div className={`relative overflow-hidden bg-slot ${className}`}>
-        <Image src={src} alt={alt ?? brief} fill sizes={sizes} priority={priority} className="object-cover" />
+      <div className={`relative overflow-hidden ${contain ? "bg-white" : "bg-slot"} ${className}`}>
+        <Image
+          src={resolvedSrc}
+          alt={resolvedAlt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className={contain ? "object-contain p-6" : "object-cover"}
+        />
       </div>
     );
   }

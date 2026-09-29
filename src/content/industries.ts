@@ -222,7 +222,7 @@ export const industries: Industry[] = [
     cardBody: "Need complex, high-quality parts for your manufacturing project? We can help.",
     cardImage: "Mixed parts, bench shot",
     heroSubline: "Need complex, high-quality parts for your manufacturing project? We can help.",
-    heroSlides: ["Engineering team at CAD stations", "Mixed parts, bench shot"],
+    heroSlides: ["Engineering team at CAD stations"],
     intro: {
       heading: "Set your manufacturing project apart with parts from Sanwei.",
       statement:

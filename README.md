@@ -65,14 +65,28 @@ solid block.
 
 ## Photography
 
-Every photograph is still a placeholder. `<ImageSlot>` renders the grey box
-with its art-direction brief visible and swaps to `next/image` the moment it
-is given a `src`. `docs/photo-brief.md` lists all 112 outstanding shots and is
-regenerated with:
+`src/content/photography.ts` maps each art-direction brief to a supplied
+photograph and its alt text. `<ImageSlot>` looks the brief up: a registered
+brief renders a real `next/image`, an unregistered one keeps the grey
+placeholder with the brief showing, so what is still missing stays visible.
+
+Alt text lives in that one file and describes what is in the frame, not the
+shooting note. A brief like "Factory floor, wide" tells a screen reader
+nothing, so it is never used as alt text for a supplied image. Set `alt: ""`
+for an image that genuinely carries no information, as the stand-in team
+silhouettes do.
+
+45 of 108 slots are filled. `docs/photo-brief.md` lists every slot with its
+status and is regenerated with:
 
 ```bash
 npm run photo-brief
 ```
+
+Two supplied photographs carry another company's branding, small but legible:
+a laptop and chair logo in the Customer Service hero, and a hi-vis logo in the
+shot used on the Process hero and the Supply Chain intro. Worth swapping
+before launch.
 
 ## Contact form
 
@@ -86,7 +100,11 @@ Form states: idle, submitting, success and error, all built.
 
 ## Outstanding for the client
 
-1. Real photography for every slot (`docs/photo-brief.md`).
+1. The 63 remaining photographs (`docs/photo-brief.md`). In priority order:
+   portraits of Andy Cobbold and Gareth Taylor, who lead the team carousel and
+   currently show a silhouette; anything at all for Prototyping and Quality
+   Control, which have none; then the 40 gallery parts. Several supplied images
+   are only 800px wide, which is soft for a full-bleed hero at 2x.
 2. SVG logos, light and dark. The current PNGs are 165x132 and too small for retina.
 3. Destinations for the four footer document links, and for the "code of
    conduct" and "terms and conditions" links on the Quality Control page. They
