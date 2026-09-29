@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <section className="pad-x border-b border-rule pb-14 pt-20 max-md:pb-10 max-md:pt-14">
+      <section className="pad-x pb-14 pt-20 max-md:pb-10 max-md:pt-14">
         <p className="t-eyebrow mb-6 text-steel">Gallery</p>
         <div className="flex flex-wrap items-end justify-between gap-8">
           <div className="max-w-[760px]">

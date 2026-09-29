@@ -49,7 +49,7 @@ export function GalleryBrowser() {
 
   return (
     <>
-      <div className="pad-x flex flex-wrap items-center justify-between gap-4 border-b border-rule pb-6">
+      <div className="pad-x flex flex-wrap items-center justify-between gap-4 pb-5">
         <div className="flex flex-wrap gap-[10px]" role="group" aria-label="Filter parts by industry">
           {galleryFilters.map((option) => {
             const active = option === filter;
@@ -75,7 +75,7 @@ export function GalleryBrowser() {
         </p>
       </div>
 
-      <div ref={gridRef} className="pad-x py-14 max-md:py-10">
+      <div ref={gridRef} className="pad-x pb-14 max-md:pb-10">
         <div className="grid grid-cols-2 gap-5 max-sm:gap-3 lg:grid-cols-3 xl:grid-cols-4">
           {visible.map((item) => (
             <figure key={`${item.industry}-${item.name}`} className="border border-rule bg-card">
