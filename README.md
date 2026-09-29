@@ -61,10 +61,14 @@ knowing:
 - Special Gothic ships no italic, so the italic statement lines (hero
   sublines, the accent pull quotes, the "and" on Project Management) render
   as a browser-synthesised oblique rather than drawn italics.
-- It sets considerably wider than the serif it replaced, so the hero maxima
-  came down to hold the original line counts: 112px to 92px on the homepage,
-  104px to 88px on interior pages. Every page was re-checked for overflow at
-  1440, 1280, 1024, 768 and 390.
+- It sets considerably wider and heavier than the serif it replaced, so the
+  large end of the display ramp came down from the handoff's figures: hero
+  112px to 82px on the homepage and 104px to 78px on interior pages, page
+  title 76px to 68px, major section H2 52px to 48px, and the closing CTA
+  heading 66px to 58px. The `vw` term of each `clamp()` came down with the
+  maximum so the reduction carries at mid widths rather than only at the cap.
+  Every page was re-checked for hero overflow and horizontal scroll at 1440,
+  1280, 1024, 768 and 390.
 
 **The content layer** (`src/content/`) holds every piece of copy. It is taken
 verbatim from the prototypes, including the house style of no em dashes.

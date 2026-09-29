@@ -174,7 +174,7 @@ export function CtaBand({
         tone === "paper-tint" ? "bg-paper-tint" : "bg-paper"
       }`}
     >
-      <h2 className="t-h2-major mb-4 text-[clamp(34px,5.4vw,66px)]">{heading}</h2>
+      <h2 className="t-h2-major mb-4 text-[clamp(30px,4.7vw,58px)]">{heading}</h2>
       <p className="mx-auto mb-[38px] max-w-[560px] text-[17px] leading-[1.6] text-ink-mute">{body}</p>
       <div className="flex flex-wrap justify-center gap-3">
         <PillLink href={primary.href} variant="accent" className="py-[17px] px-8">
