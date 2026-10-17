@@ -123,7 +123,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <ExpertiseTiles briefs={service.tileImages} />
 
-      <ServicesPanel heading="All services" tightTop />
+      <ServicesPanel heading="All services" ground="white" />
 
       <ClientReferenceBand reference={service.reference} />
 
