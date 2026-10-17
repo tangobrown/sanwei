@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     "Discover the missing pieces of your supply chain and manufacturing puzzle. Sanwei sources, manufactures and project-manages high-value components for the audio, automotive and marine industries.",
 };
 
+/**
+ * Inline body links. The handoff keeps underlines off every other link on the
+ * site and reserves them for inline body links, which these are.
+ */
+const bodyLink = "text-accent underline underline-offset-4 hover:text-ink";
+
 export default function HomePage() {
   return (
     <>
@@ -48,15 +54,24 @@ export default function HomePage() {
             for detail and project management know-how will be delivered to you on time and on brief as standard.
           </p>
           <p className="t-body text-ink-soft">
-            {/* The live site links the company name here, so the underline is
-                the one place the design allows it: an inline body link. */}
-            <Link href="/" className="text-accent underline underline-offset-4 hover:text-ink">
+            <Link href="/" className={bodyLink}>
               Sanwei
             </Link>{" "}
-            supplies some of the most prestigious Automotive, Marine and Audio companies around the globe. We work to
-            rigorous quality standards including: IATF16949, ISO9000, ISO14001, AS9100, using APQP, FMEA and SPC. This
-            helps us to ensure critical tasks are completed and PPAP documents are submitted where required, so that you
-            receive superior parts within your budget.
+            supplies some of the most prestigious{" "}
+            <Link href="/industries/automotive" className={bodyLink}>
+              Automotive
+            </Link>
+            ,{" "}
+            <Link href="/industries/marine" className={bodyLink}>
+              Marine
+            </Link>{" "}
+            and{" "}
+            <Link href="/industries/audio" className={bodyLink}>
+              Audio
+            </Link>{" "}
+            companies around the globe. We work to rigorous quality standards including: IATF16949, ISO9000, ISO14001,
+            AS9100, using APQP, FMEA and SPC. This helps us to ensure critical tasks are completed and PPAP documents
+            are submitted where required, so that you receive superior parts within your budget.
           </p>
           <p className="t-body text-ink-soft">
             Our reputation as a credible supplier speaks for itself &ndash; but don&rsquo;t take our word for it. The
