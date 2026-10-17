@@ -17,6 +17,7 @@ export function ServicesPanel({
   subline,
   className = "",
   ground = "paper",
+  tightTop = false,
 }: {
   heading: string;
   subline?: string;
@@ -24,9 +25,15 @@ export function ServicesPanel({
   /** The band behind the panel. White lets it read as one run with the
    *  expertise section above it on the service pages. */
   ground?: "paper" | "white";
+  /** Drops the top padding where the band above already pads below itself. */
+  tightTop?: boolean;
 }) {
   return (
-    <section className={`pad-x py-20 max-md:py-14 ${ground === "white" ? "bg-white" : "bg-paper"} ${className}`}>
+    <section
+      className={`pad-x pb-20 max-md:pb-14 ${tightTop ? "pt-0" : "pt-20 max-md:pt-14"} ${
+        ground === "white" ? "bg-white" : "bg-paper"
+      } ${className}`}
+    >
       <div className="bg-steel-deep px-14 pb-14 pt-[60px] text-white max-md:px-6 max-md:py-10">
         <div className="mb-7 grid items-center gap-x-12 gap-y-6 lg:grid-cols-3">
           {/* Sans-serif here, not the display face. */}
