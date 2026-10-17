@@ -89,60 +89,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/*
-       * Industries mosaic. Twelve columns on desktop with Audio double height;
-       * one column on mobile in reading order, so no tile is orphaned.
-       */}
+      {/* Four tiles, two by two, with Other industries closing bottom right. */}
       <section className="pad-x border-y border-rule bg-white py-24 max-md:py-14">
-        <div className="grid gap-4 lg:grid-cols-12 lg:grid-rows-[auto_300px_300px]">
-          <div className="flex flex-col gap-4 pb-7 lg:col-span-7 lg:row-start-1">
-            <h2 className="font-display text-[clamp(34px,4.4vw,52px)] leading-[1.05] tracking-[-0.02em]">
-              Technically challenging, high-value products.
-            </h2>
-            <p className="max-w-[340px] text-[15px] leading-[1.6] text-ink-soft">
-              Select your industry to find out more about how Sanwei can help you.
-            </p>
-          </div>
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <h2 className="max-w-[720px] font-display text-[clamp(34px,4.4vw,52px)] leading-[1.05] tracking-[-0.02em]">
+            Technically challenging, high-value products.
+          </h2>
+          <p className="max-w-[340px] text-[15px] leading-[1.6] text-ink-soft">
+            Select your industry to find out more about how Sanwei can help you.
+          </p>
+        </div>
 
+        <div className="grid gap-4 sm:grid-cols-2">
           <ImageTile
             href="/industries/audio"
             title="Audio"
             caption="Components and complex final products for consumer electronic & related industries."
             brief="Audio components"
-            titleClass="text-[clamp(34px,4vw,48px)]"
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="h-[400px] lg:col-span-7 lg:row-span-2 lg:row-start-2 lg:h-auto"
+            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="h-[380px] max-sm:h-[320px]"
           />
           <ImageTile
             href="/industries/automotive"
             title="Automotive"
             caption="Precision automotive components and assemblies of the highest quality."
             brief="Automotive assemblies"
-            titleClass="text-[32px]"
-            sizes="(max-width: 1024px) 100vw, 40vw"
-            className="h-[320px] lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:h-auto"
+            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="h-[380px] max-sm:h-[320px]"
           />
           <ImageTile
             href="/industries/marine"
             title="Marine"
             caption="Engine components, assemblies & boat parts made to challenging specifications."
             brief="Marine engine parts"
-            titleClass="text-[32px]"
-            sizes="(max-width: 1024px) 100vw, 40vw"
-            className="h-[320px] lg:col-span-5 lg:col-start-8 lg:row-start-3 lg:h-auto"
+            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="h-[380px] max-sm:h-[320px]"
           />
-
-          {/* Last in the DOM so mobile reads heading, Audio, Automotive,
-              Marine, Other; placed back into row 1 on desktop. */}
           <Link
             href="/industries/other-industries"
-            className="flex flex-col justify-between gap-[18px] bg-paper px-[30px] py-7 transition-colors duration-[180ms] hover:bg-paper-tint lg:col-span-5 lg:col-start-8 lg:row-start-1"
+            /* Content bottom-left, so it reads as one set with the three
+               photo tiles beside it rather than floating apart. */
+            className="flex h-[380px] flex-col justify-end gap-3 bg-paper p-[clamp(24px,4vw,40px)] transition-colors duration-[180ms] hover:bg-paper-tint max-sm:h-[320px]"
           >
-            <span className="flex items-center justify-between">
-              <span className="font-display text-[30px]">Other industries</span>
+            <span className="flex items-center justify-between gap-4">
+              <span className="font-display text-[clamp(30px,3.2vw,38px)] leading-[1.1]">Other industries</span>
               <ArrowDiagonal size={18} className="shrink-0 text-accent" />
             </span>
-            <span className="text-[15px] leading-[1.6] text-ink-soft">
+            <span className="max-w-[460px] text-[15px] leading-[1.6] text-ink-soft">
               Need complex, high-quality parts for your manufacturing project? We can help.
             </span>
           </Link>
