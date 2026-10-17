@@ -41,15 +41,26 @@ export default function HomePage() {
 
         <div className="mb-12 mt-16 w-full border-t border-rule" />
 
-        <div className="grid w-full max-w-[1000px] gap-8 text-left sm:grid-cols-2 sm:gap-x-16">
+        <div className="flex w-full max-w-[760px] flex-col gap-6">
           <p className="t-body text-ink-soft">
             Our factory in Taiwan and extensive Asian sourcing network can supply you with parts that fit your project
             scope. Whether you know exactly what you need or require some expert advice, our decades of experience, eye
             for detail and project management know-how will be delivered to you on time and on brief as standard.
           </p>
           <p className="t-body text-ink-soft">
-            Sanwei supplies some of the most prestigious Automotive, Marine and Audio companies around the globe,
-            working to rigorous quality standards so that you receive superior parts within your budget.
+            {/* The live site links the company name here, so the underline is
+                the one place the design allows it: an inline body link. */}
+            <Link href="/" className="text-accent underline underline-offset-4 hover:text-ink">
+              Sanwei
+            </Link>{" "}
+            supplies some of the most prestigious Automotive, Marine and Audio companies around the globe. We work to
+            rigorous quality standards including: IATF16949, ISO9000, ISO14001, AS9100, using APQP, FMEA and SPC. This
+            helps us to ensure critical tasks are completed and PPAP documents are submitted where required, so that you
+            receive superior parts within your budget.
+          </p>
+          <p className="t-body text-ink-soft">
+            Our reputation as a credible supplier speaks for itself &ndash; but don&rsquo;t take our word for it. The
+            customer testimonials below should help to inspire confidence that we can deliver.
           </p>
         </div>
 
