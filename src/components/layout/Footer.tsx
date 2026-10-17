@@ -11,7 +11,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-3 font-semibold text-on-dark">{offices.asia.name}</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-on-dark">{offices.asia.name}</h2>
           <address className="not-italic">
             24F, No. 161 Song De Road
             <br />
@@ -31,7 +31,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-3 font-semibold text-on-dark">{offices.uk.name}</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-on-dark">{offices.uk.name}</h2>
           <address className="not-italic">
             Axminster, East Devon
             <br />
@@ -46,7 +46,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-3 font-semibold text-on-dark">Documents</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-on-dark">Documents</h2>
           <ul>
             {footerDocuments.map((doc) => (
               <li key={doc.label}>
@@ -59,7 +59,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-3 font-semibold text-on-dark">Group</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-on-dark">Group</h2>
           <p>
             {groupBlurb.text}{" "}
             <a
@@ -72,6 +72,17 @@ export function Footer() {
             </a>
           </p>
         </div>
+      </div>
+
+      {/*
+       * The year is read at build time rather than hard-coded, so a redeploy
+       * keeps it current without anyone having to remember.
+       */}
+      <div className="mt-[52px] flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-rule-dark pt-6">
+        <p>&copy; Copyright {new Date().getFullYear()} - Sanwei Asia Ltd. All rights reserved.</p>
+        <Link href="/privacy" className="transition-colors duration-[180ms] hover:text-accent-soft">
+          Privacy policy
+        </Link>
       </div>
     </footer>
   );

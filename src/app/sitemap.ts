@@ -5,7 +5,7 @@ import { services } from "@/content/services";
 const BASE_URL = "https://www.sanwei-asia.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ["/", "/gallery", "/why-sanwei", "/process", "/contact"];
+  const staticPaths = ["/", "/gallery", "/why-sanwei", "/process", "/contact", "/privacy"];
 
   return [
     ...staticPaths.map((path) => ({
