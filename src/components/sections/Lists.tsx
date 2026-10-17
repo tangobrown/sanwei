@@ -59,11 +59,11 @@ export function ProcessTriptych({
   cta: { label: string; href: string };
 }) {
   return (
-    <section className="pad-x py-20 max-md:py-14 max-sm:py-11">
+    <section className="pad-x pb-20 pt-10 max-md:pb-14 max-md:pt-8 max-sm:pb-11 max-sm:pt-6">
       <div className="border border-rule bg-card p-14 max-md:p-6">
-        <div className="mb-11 flex flex-wrap items-end justify-between gap-4">
+        <div className="mb-11">
           <h2 className="t-h2-minor">{heading}</h2>
-          <p className="max-w-[320px] text-[15px] leading-[1.6] text-steel">{subline}</p>
+          <p className="mt-4 text-[15px] leading-[1.6] text-steel">{subline}</p>
         </div>
         <div className="grid lg:grid-cols-3">
           {steps.map((step, i) => (
@@ -79,7 +79,10 @@ export function ProcessTriptych({
             </div>
           ))}
         </div>
-        <PillLink href={cta.href} variant="ink" withArrow className="mt-11 px-7 py-[15px]">
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <PillLink href={cta.href} variant="ink" withArrow className="px-7 py-[15px]">
           {cta.label}
         </PillLink>
       </div>
