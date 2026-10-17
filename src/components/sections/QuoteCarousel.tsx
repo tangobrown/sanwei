@@ -44,7 +44,7 @@ export function QuoteCarousel({ references }: { references: ClientReference[] })
       ) : null}
 
       <div className="pad-x">
-        <div className="max-w-[900px]">
+        <div className="mx-auto max-w-[900px] text-center">
           <p className="t-eyebrow mb-[26px] text-on-dark-soft">Client references</p>
 
           <figure aria-live="polite">
@@ -54,7 +54,7 @@ export function QuoteCarousel({ references }: { references: ClientReference[] })
             <figcaption className="t-label text-accent-pale">{reference.role}</figcaption>
           </figure>
 
-          <div className="mt-[38px] flex gap-[10px]">
+          <div className="mt-[38px] flex justify-center gap-[10px]">
             <button
               type="button"
               onClick={() => step(-1)}
