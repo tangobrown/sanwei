@@ -16,13 +16,18 @@ export function ServicesPanel({
   heading,
   subline,
   className = "",
+  tightTop = false,
 }: {
   heading: string;
   subline?: string;
   className?: string;
+  /** The service pages sit this under a band that already pads below it. */
+  tightTop?: boolean;
 }) {
   return (
-    <section className={`pad-x bg-paper py-20 max-md:py-14 ${className}`}>
+    <section
+      className={`pad-x bg-paper pb-20 max-md:pb-14 ${tightTop ? "pt-4 max-md:pt-2" : "pt-20 max-md:pt-14"} ${className}`}
+    >
       <div className="bg-steel-deep px-14 pb-14 pt-[60px] text-white max-md:px-6 max-md:py-10">
         <div className="mb-7 grid items-center gap-x-12 gap-y-6 lg:grid-cols-3">
           {/* Sans-serif here, not the display face. */}

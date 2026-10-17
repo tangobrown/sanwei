@@ -60,11 +60,18 @@ export function RiskFactors({ riskFactors }: { riskFactors: NonNullable<Service[
   return (
     <section className="pad-x bg-white pb-24 max-md:pb-14">
       <p className="t-eyebrow-sm mb-8 text-steel">{riskFactors.eyebrow}</p>
-      <HairlineGrid columns={{ base: 1, sm: 2, lg: 3 }} className="sm:grid-cols-2 lg:grid-cols-3" fillerClassName="bg-white">
+      {/*
+       * All five read as one row on a wide screen, so the number stacks over
+       * the phrase there; below that the cells go back to reading inline.
+       */}
+      <HairlineGrid columns={{ base: 1, sm: 2, lg: 5 }} className="sm:grid-cols-2 lg:grid-cols-5" fillerClassName="bg-white">
         {riskFactors.points.map((point, i) => (
-          <div key={point} className="flex items-baseline gap-[18px] bg-white px-10 py-[34px] max-md:px-6">
-            <span className="font-display text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
-            <span className="text-[17px] leading-[1.5]">{point}</span>
+          <div
+            key={point}
+            className="flex items-baseline gap-[18px] bg-white px-10 py-[34px] max-md:px-6 lg:flex-col lg:gap-[14px] lg:px-7 lg:py-8"
+          >
+            <span className="font-display text-[26px] leading-none text-accent">{String(i + 1).padStart(2, "0")}</span>
+            <span className="text-[17px] leading-[1.5] lg:text-[16px] lg:leading-[1.45]">{point}</span>
           </div>
         ))}
       </HairlineGrid>
