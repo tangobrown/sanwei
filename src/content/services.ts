@@ -22,7 +22,10 @@ export type Service = {
   slug: string;
   name: string;
   heroSubline: string;
-  heroSlide: string;
+  /** Rises into the hero and sticks beside the intro copy. */
+  introImage: string;
+  /** The expertise and process tiles at the foot of the page. */
+  tileImages: [string, string];
   /** Project Management alone carries a standfirst above the intro. */
   standfirst?: string;
   intro: {
@@ -62,9 +65,10 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "customer-service",
+    introImage: "Desk, monitors, hands on keyboard",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Customer Service",
     heroSubline: "Exceptional service should have a tangible impact on your project's feasibility and profitability.",
-    heroSlide: "Support desk / team at screens",
     intro: {
       heading: "We recognise that sourcing/manufacturing is only half of your battle to deliver projects optimally.",
       paragraphs: [
@@ -91,9 +95,10 @@ export const services: Service[] = [
   },
   {
     slug: "engineering-consulting",
+    introImage: "CAD model on screen, close crop",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Engineering Consulting",
     heroSubline: "Expert advice. Optimal project outcomes.",
-    heroSlide: "Engineer at CAD workstation",
     intro: {
       heading: "Consultative approach",
       paragraphs: [
@@ -116,9 +121,10 @@ export const services: Service[] = [
   },
   {
     slug: "fluid-technologies",
+    introImage: "Hose and pipe assembly, close crop",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Fluid Technologies",
     heroSubline: "High-performance fluid carrying systems for automotive, marine manufacturing and more.",
-    heroSlide: "Engine bay, hoses and pipes",
     intro: {
       heading: "Fluid technologies are an integral part of ensuring your project performs optimally.",
       paragraphs: [
@@ -148,9 +154,10 @@ export const services: Service[] = [
   },
   {
     slug: "manufacturing",
+    introImage: "Welding / laser cutting, close crop",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Manufacturing",
     heroSubline: "Generating quality and value at scale.",
-    heroSlide: "Laser cutting sparks, wide",
     intro: {
       heading: "Our specialism lies in complex, technical, high-value products.",
       paragraphs: [
@@ -177,10 +184,11 @@ export const services: Service[] = [
   },
   {
     slug: "project-management",
+    introImage: "Programme plan / Gantt on screen",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Project Management",
     heroSubline:
       "Take your concept from specification to showroom with Sanwei's comprehensive project management services.",
-    heroSlide: "Project review meeting, wide",
     standfirst:
       "We adopt a holistic, end-to-end approach, striving from the outset to provide you with the best available products, technologies, quality, pricing and delivery that Asia can offer.",
     intro: {
@@ -238,9 +246,10 @@ export const services: Service[] = [
   },
   {
     slug: "prototyping",
+    introImage: "Prototype part, fully machined from solid",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Prototyping",
     heroSubline: "Taking your project from concept to reality.",
-    heroSlide: "Machining a prototype part",
     intro: {
       heading:
         "The moment that your idea becomes a physical reality through prototype development is the moment your project is truly born.",
@@ -261,9 +270,10 @@ export const services: Service[] = [
   },
   {
     slug: "quality-control",
+    introImage: "Robotic inspection arm on a part",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Quality Control",
     heroSubline: "Our quality control checks are second to none.",
-    heroSlide: "CMM probe inspecting a casting",
     intro: {
       heading:
         "After over 30 years in business, we know what it's like for customers to be on the receiving end of sub-par products, and see projects scuppered as a result.",
@@ -325,9 +335,10 @@ export const services: Service[] = [
   },
   {
     slug: "supply-chain-management",
+    introImage: "Warehouse stock check with tablet",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Supply Chain Management",
     heroSubline: "Synchronising supply with demand.",
-    heroSlide: "Warehouse aisle, wide",
     intro: {
       heading: "We recognise that sourcing/manufacturing is only half of your battle to deliver projects optimally.",
       paragraphs: [
@@ -349,9 +360,10 @@ export const services: Service[] = [
   },
   {
     slug: "tooling",
+    introImage: "Tool design model, exploded view",
+    tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Tooling",
     heroSubline: "Building the best parts to build your parts.",
-    heroSlide: "Tool room / press tooling, wide",
     intro: {
       heading: "The quality and performance of parts and components is totally dependent on the tools that produce them.",
       paragraphs: [

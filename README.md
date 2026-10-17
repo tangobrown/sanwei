@@ -53,22 +53,10 @@ utilities like `bg-ink` and `text-steel` come straight from the handoff's
 palette. Display type uses `clamp()` through the `t-*` classes in the same
 file rather than per-breakpoint overrides.
 
-**Typography** is one family, Special Gothic: display type at 600 through
-`.font-display` and the `t-*` classes, everything else at 400. This replaces
-the handoff's Instrument Serif and Archivo pairing. Two consequences worth
-knowing:
-
-- Special Gothic ships no italic, so the italic statement lines (hero
-  sublines, the accent pull quotes, the "and" on Project Management) render
-  as a browser-synthesised oblique rather than drawn italics.
-- It sets considerably wider and heavier than the serif it replaced, so the
-  large end of the display ramp came down from the handoff's figures: hero
-  112px to 82px on the homepage and 104px to 78px on interior pages, page
-  title 76px to 68px, major section H2 52px to 48px, and the closing CTA
-  heading 66px to 58px. The `vw` term of each `clamp()` came down with the
-  maximum so the reduction carries at mid widths rather than only at the cap.
-  Every page was re-checked for hero overflow and horizontal scroll at 1440,
-  1280, 1024, 768 and 390.
+**Typography** is the handoff's pairing: Instrument Serif for display through
+`.font-display` and the `t-*` classes, Archivo for everything else. The site
+ran on Special Gothic for a while; the v2 brief restored the serif, and the
+display ramp went back to the brief's clamp values with it.
 
 **The content layer** (`src/content/`) holds every piece of copy. It is taken
 verbatim from the prototypes, including the house style of no em dashes.
@@ -132,6 +120,28 @@ Form states: idle, submitting, success and error, all built.
    UK address is still "Axminster, East Devon".
 6. Certification details on the proof strip.
 7. Favicon and OG images, which were not designed.
+
+## The v2 update
+
+A second brief (`UPDATE-BRIEF-v2.md` in the handoff) revised most of the site
+after the first build. What it changed:
+
+- Interior heroes on the 14 industry, service and About pages lost their photo
+  slideshows and became a colour-only gradient band that grows with the title.
+  The intro image beneath rises 300px into the hero and sticks while the copy
+  scrolls, which is why `IntroWithStickyImage` sets `items-start` and why no
+  ancestor may set `overflow: hidden`.
+- The closing CTA became `CtaDirectRoutes`: the call to action at left and
+  sales, Asia and UK as direct `mailto:`/`tel:` rows at right.
+- The homepage intro became a centred statement, the stats strip was deleted,
+  industries became a 12-column mosaic and the services panel was rebuilt.
+- "Why choose us" became a card grid whose last card spans the remaining
+  columns, recomputed per breakpoint, so 5, 6 and 7 reasons all fill cleanly.
+  Certifications render as accent cards.
+- The team carousel became a roster beside a featured profile, built as a
+  tablist with arrow-key, Home and End support.
+- Process became a single section with the 8 stages in a 4x2 ink panel,
+  stepping 4 to 2 to 1 and never 3.
 
 ## Notes on the handoff
 

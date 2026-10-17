@@ -172,8 +172,8 @@ export const photos: Record<string, Photo> = {
     alt: "A supply chain manager checking stock on a tablet in a warehouse aisle.",
   },
   "Warehouse stock check with tablet": {
-    src: "/photography/drawing-review.jpg",
-    alt: "Two colleagues reviewing a large technical drawing spread across a table.",
+    src: "/photography/warehouse-stock-check.jpg",
+    alt: "A supply chain manager checking stock on a tablet in a warehouse aisle.",
   },
   "Port, freight and logistics montage": {
     src: "/photography/global-logistics.jpg",
@@ -216,6 +216,47 @@ export const photos: Record<string, Photo> = {
   "Client references backdrop": {
     src: "/photography/client-meeting.jpg",
     alt: "",
+  },
+
+  /*
+   * v2 slots. The colour-only interior heroes freed most of these
+   * photographs, so they are redeployed rather than left idle.
+   */
+  "Sanwei engineer reviewing a part with a client": {
+    src: "/photography/engineers-test-bench.jpg",
+    alt: "Two engineers discussing a component beside a test rig.",
+  },
+  "QC inspection, measuring a component": {
+    src: "/photography/drawing-review.jpg",
+    alt: "Two colleagues checking a part against a large technical drawing.",
+  },
+  "Speaker driver or audio assembly, close crop, portrait": {
+    src: "/photography/speaker-test-rig.jpg",
+    alt: "A loudspeaker driver and its wiring loom mounted on a test rig.",
+  },
+  "Automotive component or EV battery assembly, close crop, portrait": {
+    src: "/photography/car-chassis-rig.jpg",
+    alt: "A car stripped to its carbon fibre tub, clamped on a development rig.",
+  },
+  "Marine engine component, close crop, portrait": {
+    src: "/photography/container-ship-aerial.jpg",
+    alt: "A container ship under way at sea, seen from directly above.",
+  },
+  "Precision machined part, close crop, portrait": {
+    src: "/photography/machining-hall.jpg",
+    alt: "A machining hall, gantry cranes running over rows of part-built assemblies.",
+  },
+  "Hose and pipe assembly, close crop": {
+    src: "/photography/engine-bay-hoses.jpg",
+    alt: "Coolant hoses, clips and the expansion tank cap in an engine bay.",
+  },
+  "Company outing group photo": {
+    src: "/photography/project-workshop.jpg",
+    alt: "The Sanwei team at a working session, planning notes on the wall behind.",
+  },
+  "Taipei team photo": {
+    src: "/photography/client-meeting.jpg",
+    alt: "Colleagues talking through a project around a meeting table.",
   },
 
   // Why Sanwei?

@@ -58,11 +58,11 @@ export function ServiceDetail({ detail }: { detail: DetailBlock }) {
 /** Project Management's numbered risk-factor band. */
 export function RiskFactors({ riskFactors }: { riskFactors: NonNullable<Service["riskFactors"]> }) {
   return (
-    <section className="pad-x border-y border-rule py-20 max-md:py-14 max-sm:py-11">
+    <section className="pad-x bg-white pb-24 max-md:pb-14">
       <p className="t-eyebrow-sm mb-8 text-steel">{riskFactors.eyebrow}</p>
-      <HairlineGrid columns={{ base: 1, sm: 2, lg: 3 }} className="sm:grid-cols-2 lg:grid-cols-3">
+      <HairlineGrid columns={{ base: 1, sm: 2, lg: 3 }} className="sm:grid-cols-2 lg:grid-cols-3" fillerClassName="bg-white">
         {riskFactors.points.map((point, i) => (
-          <div key={point} className="flex items-baseline gap-[18px] bg-paper px-10 py-[34px] max-md:px-6">
+          <div key={point} className="flex items-baseline gap-[18px] bg-white px-10 py-[34px] max-md:px-6">
             <span className="font-display text-[26px] text-accent">{String(i + 1).padStart(2, "0")}</span>
             <span className="text-[17px] leading-[1.5]">{point}</span>
           </div>
@@ -148,13 +148,13 @@ export function BeyondProducts({ beyond }: { beyond: NonNullable<Service["beyond
 /** Tooling's three extra shots beneath the intro. */
 export function IntroGallery({ images }: { images: string[] }) {
   return (
-    <section className="pad-x grid gap-5 pb-[88px] max-md:pb-14 max-sm:pb-11 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="pad-x grid gap-4 bg-white pb-[104px] max-md:pb-14 sm:grid-cols-2 lg:grid-cols-3">
       {images.map((brief) => (
         <ImageSlot
           key={brief}
           brief={brief}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="h-[300px] border border-rule"
+          className="h-[300px]"
         />
       ))}
     </section>

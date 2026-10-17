@@ -87,26 +87,6 @@ export function ProcessTriptych({
   );
 }
 
-/** The homepage proof strip: serif numerals against hairline-separated cells. */
-export function StatStrip({ stats }: { stats: { value: string; label: string }[] }) {
-  return (
-    <section className="bg-steel text-white" aria-label="Sanwei by numbers">
-      <HairlineGrid
-        columns={{ base: 2, sm: 2, lg: 4 }}
-        className="grid-cols-2 bg-white/30 lg:grid-cols-4"
-        fillerClassName="bg-steel"
-      >
-        {stats.map((stat) => (
-          <div key={stat.label} className="bg-steel p-10 max-md:p-6">
-            <p className="font-display text-[clamp(40px,5vw,54px)] leading-none">{stat.value}</p>
-            <p className="t-label mt-3 text-on-dark-body">{stat.label}</p>
-          </div>
-        ))}
-      </HairlineGrid>
-    </section>
-  );
-}
-
 /** A full-bleed split of copy and photograph, used for the electrification band. */
 export function FeatureSplit({
   eyebrow,

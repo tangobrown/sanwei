@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Hero } from "@/components/sections/Hero";
-import {
-  ClientReferenceBand,
-  CtaBand,
-  IndustrySpecialisms,
-  IntroSplit,
-  ProductShowcase,
-} from "@/components/sections/Bands";
-import { FeatureSplit, ProcessTriptych, WhyChooseUs } from "@/components/sections/Lists";
+import { InteriorHero } from "@/components/sections/InteriorHero";
+import { IntroWithStickyImage } from "@/components/sections/IntroWithStickyImage";
+import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
+import { ClientReferenceBand, IndustrySpecialisms, ProductShowcase } from "@/components/sections/Bands";
+import { ProcessTriptych } from "@/components/sections/Lists";
+import { WhyChooseCards } from "@/components/sections/WhyChooseCards";
+import { BatteryBand } from "@/components/sections/BatteryBand";
 import { getIndustry, industries } from "@/content/industries";
 import { emphasise } from "@/lib/emphasis";
 
@@ -39,37 +37,42 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <Hero
+      <InteriorHero
         eyebrow="Industries"
         title={industry.name}
         subline={industry.heroSubline}
         cta={{ label: "Get in touch", href: "/contact" }}
-        slides={industry.heroSlides.map((brief) => ({ brief }))}
       />
 
-      <IntroSplit
-        heading={industry.intro.heading}
-        statement={industry.intro.statement}
-        paragraphs={industry.intro.paragraphs}
-        narrowRight
-      />
+      <IntroWithStickyImage image={{ brief: industry.introImage }} badge={industry.badge}>
+        <h2 className="t-h2-major mb-6">{industry.intro.heading}</h2>
+        <p className="border-b border-rule pb-6 font-display text-[clamp(22px,2.4vw,26px)] italic leading-[1.3] text-accent">
+          {industry.intro.statement}
+        </p>
+        <div className="mt-9 flex flex-col gap-5">
+          {industry.intro.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="t-body text-ink-soft">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </IntroWithStickyImage>
 
       {industry.featureBand ? (
-        <FeatureSplit
+        <BatteryBand
           eyebrow={industry.featureBand.eyebrow}
           heading={industry.featureBand.heading}
           paragraphs={industry.featureBand.paragraphs}
-          cta={{ label: industry.featureBand.ctaLabel, href: "/contact" }}
+          ctaLabel={industry.featureBand.ctaLabel}
           image={{ brief: industry.featureBand.image }}
         />
       ) : null}
 
       {industry.whyChooseUs ? (
-        <WhyChooseUs
+        <WhyChooseCards
           heading={industry.whyChooseUs.heading}
-          points={industry.whyChooseUs.points.map(emphasise)}
+          reasons={industry.whyChooseUs.points}
           linkLabel={industry.whyChooseUs.linkLabel}
-          linkHref="/contact"
         />
       ) : null}
 
@@ -82,6 +85,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         />
       ) : null}
 
+      {/* Other Industries keeps the earlier specialisms block; v2 did not change it. */}
       {industry.showSpecialisms ? <IndustrySpecialisms /> : null}
 
       {industry.process ? (
@@ -95,7 +99,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
       <ClientReferenceBand reference={industry.reference} />
 
-      <CtaBand heading={industry.ctaHeading} showEmail />
+      <CtaDirectRoutes heading={industry.ctaHeading} />
     </>
   );
 }

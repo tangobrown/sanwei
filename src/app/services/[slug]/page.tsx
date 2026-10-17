@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Hero } from "@/components/sections/Hero";
-import {
-  ClientReferenceBand,
-  CtaBand,
-  IndustrySpecialisms,
-  IntroWithImage,
-  PromoCards,
-  ServicesList,
-} from "@/components/sections/Bands";
-import {
-  BeyondProducts,
-  HoweverBand,
-  IntroGallery,
-  RiskFactors,
-  ServiceDetail,
-  SolutionBand,
-} from "@/components/sections/ServiceBlocks";
+import Link from "next/link";
+import { InteriorHero } from "@/components/sections/InteriorHero";
+import { IntroWithStickyImage } from "@/components/sections/IntroWithStickyImage";
+import { ImageTextSplit } from "@/components/sections/ImageTextSplit";
+import { IndustrySpecialismsV2 } from "@/components/sections/IndustrySpecialismsV2";
+import { ExpertiseTiles } from "@/components/sections/ExpertiseTiles";
+import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
+import { ClientReferenceBand, ServicesList } from "@/components/sections/Bands";
+import { BeyondProducts, HoweverBand, IntroGallery, RiskFactors, SolutionBand } from "@/components/sections/ServiceBlocks";
 import { getService, services } from "@/content/services";
 import { emphasise } from "@/lib/emphasis";
 
@@ -41,47 +33,100 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = getService(slug);
   if (!service) notFound();
 
+  const { detail } = service;
+  // Project Management's detail band follows the tinted "The solution?" band,
+  // so it needs padding above; every other page continues from white.
+  const detailNeedsTopPadding = Boolean(service.solution);
+
   return (
     <>
-      <Hero
+      <InteriorHero
         eyebrow="Services"
         title={service.name}
         subline={service.heroSubline}
         cta={{ label: "Get in touch", href: "/contact" }}
-        slides={[{ brief: service.heroSlide }]}
+        titleClass="t-hero-service"
       />
 
-      {service.standfirst ? (
-        <section className="pad-x border-b border-rule py-14 max-md:py-10">
-          <p className="max-w-[900px] t-lead text-ink-soft">{service.standfirst}</p>
-        </section>
-      ) : null}
-
-      <IntroWithImage
-        heading={service.intro.heading}
-        paragraphs={service.intro.paragraphs.map(emphasise)}
-        image={{ brief: service.intro.image }}
-      />
+      <IntroWithStickyImage image={{ brief: service.introImage }}>
+        {service.standfirst ? <p className="t-lead mb-8 text-ink-soft">{service.standfirst}</p> : null}
+        <h2 className="t-h2-major mb-7">{service.intro.heading}</h2>
+        <div className="flex flex-col gap-5">
+          {service.intro.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="t-body text-ink-soft">
+              {emphasise(paragraph)}
+            </p>
+          ))}
+        </div>
+      </IntroWithStickyImage>
 
       {service.introGallery ? <IntroGallery images={service.introGallery} /> : null}
 
-      {/* Project Management keeps this narrative order: risk, however, solution, detail. */}
+      {/* Project Management keeps its narrative order: risk, however, solution. */}
       {service.riskFactors ? <RiskFactors riskFactors={service.riskFactors} /> : null}
       {service.however ? <HoweverBand however={service.however} /> : null}
       {service.solution ? <SolutionBand solution={service.solution} /> : null}
       {service.beyond ? <BeyondProducts beyond={service.beyond} /> : null}
 
-      <ServiceDetail detail={service.detail} />
+      <ImageTextSplit image={{ brief: detail.image }} topPadding={detailNeedsTopPadding}>
+        {detail.heading ? (
+          <h2 className="mb-5 font-display text-[clamp(28px,3.2vw,36px)] leading-[1.14]">{detail.heading}</h2>
+        ) : null}
+        {detail.paragraphs?.map((paragraph) => (
+          <p key={paragraph} className="mb-4 text-[16px] leading-[1.75] text-ink-soft">
+            {emphasise(paragraph)}
+          </p>
+        ))}
+        {detail.secondary ? (
+          <div className="mt-6">
+            <h3 className="mb-4 font-display text-[clamp(24px,2.6vw,30px)] leading-[1.14]">
+              {detail.secondary.heading}
+            </h3>
+            {detail.secondary.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-[16px] leading-[1.75] text-ink-soft">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        ) : null}
+        {detail.listIntro ? <p className="mt-6 text-[15px] font-bold">{detail.listIntro}</p> : null}
+        {detail.list ? (
+          <ul className="mt-3 grid gap-x-7 sm:grid-cols-2">
+            {detail.list.map((item) => (
+              <li key={item} className="border-t border-rule py-[10px] text-[15px] leading-[1.5] text-ink-soft">
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {detail.footnote ? (
+          <p className="mt-5 text-[15px] leading-[1.75] text-ink-soft">
+            {detail.footnote.before}
+            <Link href={detail.footnote.href} className="text-accent underline underline-offset-4 hover:text-ink">
+              {detail.footnote.linkLabel}
+            </Link>
+            {detail.footnote.after}
+          </p>
+        ) : null}
+        {detail.ctaLabel && detail.ctaHref ? (
+          <Link
+            href={detail.ctaHref}
+            className="mt-6 inline-block border-b border-accent pb-[3px] text-[15px] font-semibold text-accent transition-colors duration-[180ms] hover:border-ink hover:text-ink"
+          >
+            {detail.ctaLabel}
+          </Link>
+        ) : null}
+      </ImageTextSplit>
 
-      <IndustrySpecialisms />
+      <IndustrySpecialismsV2 />
 
-      <PromoCards />
+      <ExpertiseTiles briefs={service.tileImages} />
 
       <ServicesList heading="All services" className="border-t border-rule" />
 
       <ClientReferenceBand reference={service.reference} />
 
-      <CtaBand showEmail showExperts={false} />
+      <CtaDirectRoutes heading="Find quality components fast." />
     </>
   );
 }

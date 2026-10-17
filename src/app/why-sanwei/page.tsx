@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Hero } from "@/components/sections/Hero";
-import { CtaBand } from "@/components/sections/Bands";
-import { TeamCarousel } from "@/components/about/TeamCarousel";
+import { InteriorHero } from "@/components/sections/InteriorHero";
+import { IntroWithStickyImage } from "@/components/sections/IntroWithStickyImage";
+import { TeamRoster } from "@/components/about/TeamRoster";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { offices } from "@/content/site";
 import { team } from "@/content/team";
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
 export default function WhySanweiPage() {
   return (
     <>
-      <Hero
+      {/* No button on this hero, per the brief. */}
+      <InteriorHero
         eyebrow="Why Sanwei?"
         title="About us"
         subline="Our team of specialist engineers are completely focused on helping you to achieve your goals."
-        slides={[{ brief: "Sanwei team on site, wide" }]}
       />
 
-      <section className="pad-x grid items-start gap-[72px] pb-[72px] pt-[88px] max-md:pb-14 max-md:pt-14 max-sm:pb-11 max-sm:pt-11 lg:grid-cols-2">
+      <IntroWithStickyImage image={{ brief: "Company outing group photo" }}>
         <div>
           <h2 className="t-h2-minor mb-[26px]">
             Sanwei Technical Ltd is an Asia based part sourcing, project management, engineering and manufacturing
@@ -56,12 +56,7 @@ export default function WhySanweiPage() {
             </p>
           </div>
         </div>
-        <ImageSlot
-          brief="Company outing group photo"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="h-[460px] max-md:h-[300px]"
-        />
-      </section>
+      </IntroWithStickyImage>
 
       <section className="pad-x grid gap-16 bg-ink py-[104px] text-on-dark max-md:py-14 max-sm:py-11 lg:grid-cols-2">
         <div>
@@ -114,9 +109,7 @@ export default function WhySanweiPage() {
         </div>
       </section>
 
-      <TeamCarousel members={team} />
-
-      <CtaBand showEmail showExperts={false} />
+      <TeamRoster members={team} />
 
       <section className="pad-x border-t border-rule py-20 max-md:py-14 max-sm:py-11">
         <div className="grid gap-12 lg:grid-cols-2">

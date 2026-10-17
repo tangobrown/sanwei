@@ -13,7 +13,6 @@ export type Industry = {
   cardBody: string;
   cardImage: string;
   heroSubline: string;
-  heroSlides: string[];
   intro: {
     heading: string;
     statement: string;
@@ -22,9 +21,14 @@ export type Industry = {
   /** Present on Audio, Automotive and Marine; Other Industries has no such band. */
   whyChooseUs?: {
     heading: string;
-    points: string[];
+    /** A reason ending in a certification name renders as an accent card. */
+    points: { text: string; certification?: boolean }[];
     linkLabel: string;
   };
+  /** Portrait close crop that rises into the hero and sticks beside the intro. */
+  introImage: string;
+  /** Audio and Other Industries claim 30+ years, so only they show the badge. */
+  badge?: { value: string; label: string };
   /** Only Automotive carries the electrification band. */
   featureBand?: {
     eyebrow: string;
@@ -70,12 +74,13 @@ const sharedSteps = (secondLabel: string, thirdLabel: string): IndustryStep[] =>
 export const industries: Industry[] = [
   {
     slug: "audio",
+    introImage: "Speaker driver or audio assembly, close crop, portrait",
+    badge: { value: "30+", label: "Years of industry experience" },
     name: "Audio",
     cardTitle: "Audio",
     cardBody: "Components and complex final products for consumer electronic & related industries.",
     cardImage: "Audio components",
     heroSubline: "Amplify your success with clear consultancy and superior audio components.",
-    heroSlides: ["Speaker grille / driver, close crop", "Assembly line, audio housings"],
     intro: {
       heading: "Trusted by leading audio manufacturers for decades.",
       statement:
@@ -88,11 +93,11 @@ export const industries: Industry[] = [
     whyChooseUs: {
       heading: "Why choose us to fulfil your audio requirements?",
       points: [
-        "Over three decades of industry expertise",
-        "Trusted by audio industry leaders",
-        "Strategic consultancy with feasibility and profitability at its core",
-        "Unwavering focus on quality and value across sourcing *and* manufacturing",
-        "Equivalent materials recommendations based on national requirements and specifications",
+        { text: "Over three decades of industry expertise" },
+        { text: "Trusted by audio industry leaders" },
+        { text: "Strategic consultancy with feasibility and profitability at its core" },
+        { text: "Unwavering focus on quality and value across sourcing *and* manufacturing" },
+        { text: "Equivalent materials recommendations based on national requirements and specifications" },
       ],
       linkLabel: "Talk to our audio team",
     },
@@ -115,12 +120,12 @@ export const industries: Industry[] = [
   },
   {
     slug: "automotive",
+    introImage: "Automotive component or EV battery assembly, close crop, portrait",
     name: "Automotive",
     cardTitle: "Automotive",
     cardBody: "Precision automotive components and assemblies of the highest quality.",
     cardImage: "Automotive assemblies",
     heroSubline: "Future-proof your automotive manufacturing with support from Sanwei at every stage.",
-    heroSlides: ["Automotive assembly line, wide", "Machined automotive component, close crop"],
     intro: {
       heading: "Parts, processes and consultancy to accelerate your project.",
       statement:
@@ -142,12 +147,12 @@ export const industries: Industry[] = [
     whyChooseUs: {
       heading: "Why choose us for your automotive requirements?",
       points: [
-        "Unparalleled knowledge of automotive industry trends",
-        "Industry-leading strategic consultancy with feasibility and profitability at its core",
-        "Unwavering focus on quality and value across sourcing *and* manufacturing",
-        "In-depth knowledge of automotive requirements including APQP and PPAP",
-        "Equivalent materials recommendations based on national requirements and specifications",
-        "IATF16949",
+        { text: "Unparalleled knowledge of automotive industry trends" },
+        { text: "Industry-leading strategic consultancy with feasibility and profitability at its core" },
+        { text: "Unwavering focus on quality and value across sourcing *and* manufacturing" },
+        { text: "In-depth knowledge of automotive requirements including APQP and PPAP" },
+        { text: "Equivalent materials recommendations based on national requirements and specifications" },
+        { text: "IATF16949", certification: true },
       ],
       linkLabel: "Talk to our automotive team",
     },
@@ -170,12 +175,12 @@ export const industries: Industry[] = [
   },
   {
     slug: "marine",
+    introImage: "Marine engine component, close crop, portrait",
     name: "Marine",
     cardTitle: "Marine",
     cardBody: "Engine components, assemblies & boat parts made to challenging specifications.",
     cardImage: "Marine engine parts",
     heroSubline: "Millions of products and stellar services to propel your marine manufacturing project forward.",
-    heroSlides: ["Boat wake at sunset, wide", "Marine engine component, close crop"],
     intro: {
       heading: "Navigate your build with the most effective sourcing consultancy on land or sea.",
       statement:
@@ -188,13 +193,13 @@ export const industries: Industry[] = [
     whyChooseUs: {
       heading: "Why choose us to fulfil your marine requirements?",
       points: [
-        "Access to a huge range of existing products",
-        "Bespoke manufacturing of custom parts to fit your project",
-        "Unwavering focus on quality and value across sourcing *and* manufacturing",
-        "Trusted by marine industry leaders",
-        "Strategic consultancy with feasibility and profitability at its core",
-        "Equivalent materials recommendations based on national requirements and specifications",
-        "IATF16949",
+        { text: "Access to a huge range of existing products" },
+        { text: "Bespoke manufacturing of custom parts to fit your project" },
+        { text: "Unwavering focus on quality and value across sourcing *and* manufacturing" },
+        { text: "Trusted by marine industry leaders" },
+        { text: "Strategic consultancy with feasibility and profitability at its core" },
+        { text: "Equivalent materials recommendations based on national requirements and specifications" },
+        { text: "IATF16949", certification: true },
       ],
       linkLabel: "Talk to our marine team",
     },
@@ -217,12 +222,13 @@ export const industries: Industry[] = [
   },
   {
     slug: "other-industries",
+    introImage: "Precision machined part, close crop, portrait",
+    badge: { value: "30+", label: "Years of industry experience" },
     name: "Other industries",
     cardTitle: "Other industries",
     cardBody: "Need complex, high-quality parts for your manufacturing project? We can help.",
     cardImage: "Mixed parts, bench shot",
     heroSubline: "Need complex, high-quality parts for your manufacturing project? We can help.",
-    heroSlides: ["Engineering team at CAD stations"],
     intro: {
       heading: "Set your manufacturing project apart with parts from Sanwei.",
       statement:

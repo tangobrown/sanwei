@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/Hero";
-import { ClientReferenceBand, CtaBand } from "@/components/sections/Bands";
+import { InteriorHero } from "@/components/sections/InteriorHero";
+import { ClientReferenceBand } from "@/components/sections/Bands";
+import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
 import { PillLink } from "@/components/ui/Buttons";
-import { ImageSlot } from "@/components/ui/ImageSlot";
 import { referenceByRole } from "@/content/site";
 import { processSteps } from "@/content/process";
 
@@ -16,58 +16,45 @@ export const metadata: Metadata = {
 export default function ProcessPage() {
   return (
     <>
-      <Hero
+      <InteriorHero
         eyebrow="How we work"
         title="Our process"
         subline="A tried-and-tested method for sourcing success."
-        slides={[{ brief: "Inspection bench / metrology, wide" }]}
+        cta={{ label: "Get in touch", href: "/contact" }}
       />
 
-      <section className="pad-x grid items-start gap-12 pb-[72px] pt-[88px] max-md:pb-14 max-md:pt-14 max-sm:pb-11 max-sm:pt-11 lg:grid-cols-2 lg:gap-20">
-        <h2 className="t-h2-major">
-          We realise that every project is different, so there&rsquo;s always a slight variation in what might be the
-          best approach. But generally speaking, working with us will look something like this.
-        </h2>
-        <p className="t-lead pt-[10px] text-ink-soft">
-          Eight stages, from the NDA that protects your design to the shipment that lands on your dock. You keep one
-          point of contact throughout.
-        </p>
-      </section>
+      <section className="pad-x bg-paper py-24 max-md:py-14">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <h2 className="max-w-[760px] font-display text-[clamp(30px,3.4vw,40px)] leading-[1.15]">
+            We realise that every project is different, so there&rsquo;s always a slight variation in what might be the
+            best approach. But generally speaking, working with us will look something like this.
+          </h2>
+          <PillLink href="/contact" variant="accent" withArrow className="px-7 py-[15px] hover:bg-ink">
+            Get started
+          </PillLink>
+        </div>
 
-      <ol className="pad-x border-t border-rule">
-        {processSteps.map((step, i) => (
-          <li
-            key={step.title}
-            className="grid items-start gap-8 border-b border-rule py-12 max-md:py-8 lg:grid-cols-[120px_1fr_1fr] lg:gap-16"
-          >
-            <span aria-hidden="true" className="font-display text-[clamp(44px,5vw,64px)] leading-none text-accent">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h2 className="text-[20px] font-bold leading-[1.35]">{step.title}</h2>
-              <p className="mt-3 text-[16px] leading-[1.75] text-ink-soft lg:hidden">{step.body}</p>
-            </div>
-            <p className="hidden text-[16px] leading-[1.75] text-ink-soft lg:block">{step.body}</p>
-          </li>
-        ))}
-      </ol>
-
-      {/* Alternating imagery, sitting between the sequence and the assurance band. */}
-      <section className="pad-x grid gap-5 py-20 max-md:py-14 max-sm:py-11 lg:grid-cols-3">
-        <ImageSlot brief="NDA and drawing on a desk" sizes="(max-width: 1024px) 100vw, 33vw" className="h-[280px]" />
-        <ImageSlot brief="Engineering assessment, screen and team" sizes="(max-width: 1024px) 100vw, 33vw" className="h-[280px]" />
-        <ImageSlot brief="Packed parts leaving the factory" sizes="(max-width: 1024px) 100vw, 33vw" className="h-[280px]" />
-      </section>
-
-      <section className="pad-x bg-paper-tint py-20 text-center max-md:py-14 max-sm:py-11">
-        <PillLink href="/contact" variant="ink" withArrow className="px-7 py-[15px]">
-          Get started
-        </PillLink>
+        {/*
+         * Eight stages, 4 across. It steps to 2 then 1 and never 3, because 8
+         * does not divide into 3 and would leave an orphan.
+         */}
+        <ol className="grid gap-y-14 bg-ink p-14 text-on-dark max-md:p-[clamp(28px,4vw,48px)] sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, i) => (
+            <li key={step.title} className="relative border-t border-rule-dark pr-6 pt-[30px] max-sm:pr-0">
+              <span aria-hidden="true" className="absolute left-0 top-0 h-[3px] w-3 -translate-y-[2px] bg-accent-soft" />
+              <p aria-hidden="true" className="font-display text-[44px] leading-none text-accent-soft">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 text-[18px] font-bold leading-[1.3]">{step.title}</h3>
+              <p className="mt-3 text-[14px] leading-[1.7] text-on-dark-dim">{step.body}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <ClientReferenceBand reference={referenceByRole.purchasingManager} />
 
-      <CtaBand showEmail />
+      <CtaDirectRoutes heading="Find quality components fast." />
     </>
   );
 }
