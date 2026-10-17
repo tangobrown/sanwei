@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowLink, PillLink } from "@/components/ui/Buttons";
 import { ArrowDiagonal } from "@/components/ui/Icons";
 import { ImageSlot } from "@/components/ui/ImageSlot";
+import { getPhoto } from "@/content/photography";
 import type { ClientReference } from "@/content/site";
 import { defaultCta, industrySpecialisms, promoCards, salesEmail } from "@/content/site";
 
@@ -154,13 +156,33 @@ export function PanelList({ items }: { items: string[] }) {
 
 /** The `ink` feature band carrying a single client reference. */
 export function ClientReferenceBand({ reference, label = "Client reference" }: { reference: ClientReference; label?: string }) {
+  const backdrop = getPhoto("Client references backdrop");
+
   return (
-    <section className="pad-x bg-ink py-[88px] text-on-dark max-md:py-14 max-sm:py-11">
-      <figure className="mx-auto max-w-[900px] text-center">
-        <figcaption className="t-eyebrow mb-[26px] text-steel-light">{label}</figcaption>
-        <blockquote className="t-quote mb-[26px] text-on-dark">&ldquo;{reference.quote}&rdquo;</blockquote>
-        <p className="t-label text-accent-soft">{reference.role}</p>
-      </figure>
+    <section className="relative isolate overflow-hidden bg-ink py-[88px] text-on-dark max-md:py-14 max-sm:py-11">
+      {backdrop ? (
+        <Image
+          src={backdrop.src}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          /* Scaled up so the blur's soft edge falls outside the band. */
+          className="-z-10 scale-110 object-cover opacity-30 blur-[14px]"
+        />
+      ) : null}
+
+      <div className="pad-x">
+        <figure className="mx-auto max-w-[900px] text-center">
+          {/*
+           * The two small labels are brightened against the photograph; at
+           * steel-light and accent-soft they fell under 4.5:1 over it.
+           */}
+          <figcaption className="t-eyebrow mb-[26px] text-on-dark-soft">{label}</figcaption>
+          <blockquote className="t-quote mb-[26px] text-on-dark">&ldquo;{reference.quote}&rdquo;</blockquote>
+          <p className="t-label text-accent-pale">{reference.role}</p>
+        </figure>
+      </div>
     </section>
   );
 }
