@@ -58,15 +58,14 @@
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  /*
+   * No `scroll-behavior: smooth` on `html`. The App Router scrolls the new
+   * page into view on navigation, and a smooth root scroller turned that into
+   * an animation that settled on the content's offset (93px, the header and
+   * its rule) rather than the top, leaving every hero tucked under the header.
+   */
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
     *,
     *::before,
     *::after {
