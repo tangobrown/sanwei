@@ -4,7 +4,7 @@ Each row below is the art-direction brief carried by one `<ImageSlot>`.
 A brief listed in `src/content/photography.ts` renders a real `next/image`;
 one that is not still renders the grey placeholder with its brief showing.
 
-55 of 90 shots are still outstanding.
+55 of 91 shots are still outstanding.
 
 | Shot | Status | Used in |
 | --- | --- | --- |
@@ -70,6 +70,7 @@ one that is not still renders the grey placeholder with its brief showing.
 | Military connector shell | **outstanding** | src/content/gallery.ts |
 | Mixed parts, bench shot | **outstanding** | src/content/industries.ts |
 | Moulder Chen | supplied | src/content/team.ts |
+| Other industries | supplied | src/app/page.tsx |
 | Pedal bracket | **outstanding** | src/content/gallery.ts |
 | Port, freight and logistics montage | supplied | src/content/services.ts |
 | Press shop / tooling | supplied | src/app/page.tsx |

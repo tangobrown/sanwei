@@ -6,7 +6,6 @@ import { ServicesPanel } from "@/components/sections/ServicesPanel";
 import { QuoteCarousel } from "@/components/sections/QuoteCarousel";
 import { ImageTile } from "@/components/ui/ImageTile";
 import { PillLink } from "@/components/ui/Buttons";
-import { ArrowDiagonal } from "@/components/ui/Icons";
 import { clientReferences } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -106,7 +105,7 @@ export default function HomePage() {
             title="Audio"
             caption="Components and complex final products for consumer electronic & related industries."
             brief="Audio components"
-            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            titleClass="text-[clamp(34px,4vw,48px)]"
             sizes="(max-width: 640px) 100vw, 50vw"
             className="h-[380px] max-sm:h-[320px]"
           />
@@ -115,7 +114,7 @@ export default function HomePage() {
             title="Automotive"
             caption="Precision automotive components and assemblies of the highest quality."
             brief="Automotive assemblies"
-            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            titleClass="text-[clamp(34px,4vw,48px)]"
             sizes="(max-width: 640px) 100vw, 50vw"
             className="h-[380px] max-sm:h-[320px]"
           />
@@ -124,24 +123,19 @@ export default function HomePage() {
             title="Marine"
             caption="Engine components, assemblies & boat parts made to challenging specifications."
             brief="Marine engine parts"
-            titleClass="text-[clamp(30px,3.2vw,38px)]"
+            titleClass="text-[clamp(34px,4vw,48px)]"
             sizes="(max-width: 640px) 100vw, 50vw"
             className="h-[380px] max-sm:h-[320px]"
           />
-          <Link
+          <ImageTile
             href="/industries/other-industries"
-            /* Content bottom-left, so it reads as one set with the three
-               photo tiles beside it rather than floating apart. */
-            className="flex h-[380px] flex-col justify-end gap-3 bg-paper p-[clamp(24px,4vw,40px)] transition-colors duration-[180ms] hover:bg-paper-tint max-sm:h-[320px]"
-          >
-            <span className="flex items-center justify-between gap-4">
-              <span className="font-display text-[clamp(30px,3.2vw,38px)] leading-[1.1]">Other industries</span>
-              <ArrowDiagonal size={18} className="shrink-0 text-accent" />
-            </span>
-            <span className="max-w-[460px] text-[15px] leading-[1.6] text-ink-soft">
-              Need complex, high-quality parts for your manufacturing project? We can help.
-            </span>
-          </Link>
+            title="Other industries"
+            caption="Need complex, high-quality parts for your manufacturing project? We can help."
+            brief="Other industries"
+            titleClass="text-[clamp(34px,4vw,48px)]"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="h-[380px] max-sm:h-[320px]"
+          />
         </div>
       </section>
 

@@ -43,6 +43,10 @@ export const photos: Record<string, Photo> = {
     src: "/photography/body-in-white-line.jpg",
     alt: "A car body in white on a robotic assembly line.",
   },
+  "Other industries": {
+    src: "/photography/machining-hall.jpg",
+    alt: "A machining hall, gantry cranes running over rows of part-built industrial assemblies.",
+  },
   "Marine engine parts": {
     src: "/photography/vessel-at-quay.jpg",
     alt: "An ice-class vessel moored alongside a quay at dusk.",
