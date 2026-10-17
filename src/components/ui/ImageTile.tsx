@@ -42,9 +42,9 @@ export function ImageTile({
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-[clamp(24px,4vw,40px)] text-white">
         <div className="flex items-center justify-between gap-4">
           <span className={`font-display ${titleClass} leading-[1.1]`}>{title}</span>
-          <ArrowDiagonal size={18} className="shrink-0 transition-colors duration-[180ms] group-hover:text-accent-pale" />
+          <ArrowDiagonal size={22} className="shrink-0 transition-colors duration-[180ms] group-hover:text-accent-pale" />
         </div>
-        {caption ? <p className="max-w-[460px] text-[15px] leading-[1.6] text-on-dark-tile">{caption}</p> : null}
+        {caption ? <p className="max-w-[360px] text-[15px] leading-[1.6] text-on-dark-tile">{caption}</p> : null}
         {children}
       </div>
     </Link>
