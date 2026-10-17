@@ -26,7 +26,28 @@ const tiles = [
 const sectors = ["Energy", "Aerospace", "Hardware", "Military", "And more…"];
 
 /** Photo tiles plus the sector strip. Replaces the old five-tile row. */
-export function IndustrySpecialismsV2() {
+export function IndustrySpecialismsV2({
+  /** Other Industries renders the sector strip flat: it would link to itself. */
+  linkOtherIndustries = true,
+}: {
+  linkOtherIndustries?: boolean;
+} = {}) {
+  const otherIndustries = (
+    <>
+      <span className="font-display text-[28px]">Other industries</span>
+      <span
+        className={`flex flex-wrap gap-x-7 gap-y-1 text-[15px] text-on-dark-dim ${
+          linkOtherIndustries ? "group-hover:text-white" : ""
+        }`}
+      >
+        {sectors.map((sector) => (
+          <span key={sector}>{sector}</span>
+        ))}
+      </span>
+      {linkOtherIndustries ? <ArrowDiagonal size={18} className="ml-auto shrink-0" /> : null}
+    </>
+  );
+
   return (
     <section className="pad-x bg-paper py-[88px] max-md:py-14">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -47,22 +68,23 @@ export function IndustrySpecialismsV2() {
             brief={tile.brief}
             sizes="(max-width: 1024px) 100vw, 33vw"
             className="h-[clamp(300px,30vw,380px)]"
+            hoverFade
           />
         ))}
       </div>
 
-      <Link
-        href="/industries/other-industries"
-        className="group mt-4 flex flex-wrap items-center gap-x-7 gap-y-3 bg-ink px-10 py-8 text-on-dark transition-colors duration-[180ms] hover:bg-accent max-md:px-6"
-      >
-        <span className="font-display text-[28px]">Other industries</span>
-        <span className="flex flex-wrap gap-x-7 gap-y-1 text-[15px] text-on-dark-dim group-hover:text-white">
-          {sectors.map((sector) => (
-            <span key={sector}>{sector}</span>
-          ))}
-        </span>
-        <ArrowDiagonal size={18} className="ml-auto shrink-0" />
-      </Link>
+      {linkOtherIndustries ? (
+        <Link
+          href="/industries/other-industries"
+          className="group mt-4 flex flex-wrap items-center gap-x-7 gap-y-3 bg-ink px-10 py-8 text-on-dark transition-colors duration-[180ms] hover:bg-accent max-md:px-6"
+        >
+          {otherIndustries}
+        </Link>
+      ) : (
+        <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-3 bg-ink px-10 py-8 text-on-dark max-md:px-6">
+          {otherIndustries}
+        </div>
+      )}
     </section>
   );
 }

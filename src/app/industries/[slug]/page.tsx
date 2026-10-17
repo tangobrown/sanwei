@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { InteriorHero } from "@/components/sections/InteriorHero";
 import { IntroWithStickyImage } from "@/components/sections/IntroWithStickyImage";
 import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
-import { ClientReferenceBand, IndustrySpecialisms, ProductShowcase } from "@/components/sections/Bands";
+import { ClientReferenceBand, ProductShowcase } from "@/components/sections/Bands";
+import { IndustrySpecialismsV2 } from "@/components/sections/IndustrySpecialismsV2";
 import { ProcessTriptych } from "@/components/sections/Lists";
 import { WhyChooseCards } from "@/components/sections/WhyChooseCards";
 import { BatteryBand } from "@/components/sections/BatteryBand";
@@ -85,8 +86,8 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         />
       ) : null}
 
-      {/* Other Industries keeps the earlier specialisms block; v2 did not change it. */}
-      {industry.showSpecialisms ? <IndustrySpecialisms /> : null}
+      {/* Only Other Industries carries this; the strip is flat there, not a self-link. */}
+      {industry.showSpecialisms ? <IndustrySpecialismsV2 linkOtherIndustries={false} /> : null}
 
       {industry.process ? (
         <ProcessTriptych

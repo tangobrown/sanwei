@@ -153,24 +153,6 @@ export const defaultCta = {
 };
 
 /** The three linked industry cards plus the five named sectors. */
-export const industrySpecialisms = {
-  heading: "Industry specialisms",
-  subline: "Select an industry to find out more about how Sanwei can help you.",
-  cards: [
-    { label: "Audio", href: "/industries/audio", slot: "Audio" },
-    { label: "Automotive", href: "/industries/automotive", slot: "Automotive" },
-    { label: "Marine", href: "/industries/marine", slot: "Marine" },
-  ],
-  tiles: [
-    { label: "Energy", href: "/industries/other-industries" },
-    { label: "Aerospace", href: "/industries/other-industries" },
-    { label: "Hardware", href: "/industries/other-industries" },
-    { label: "Military", href: "/industries/other-industries" },
-    { label: "And more…", href: "/industries/other-industries" },
-  ],
-};
-
-/** The two tall promo cards that sit on every service page. */
 export const promoCards = [
   {
     title: "Industry leading expertise developed over decades",

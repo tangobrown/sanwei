@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowLink, PillLink } from "@/components/ui/Buttons";
-import { ArrowDiagonal } from "@/components/ui/Icons";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { getPhoto } from "@/content/photography";
 import type { ClientReference } from "@/content/site";
-import { defaultCta, industrySpecialisms, promoCards, salesEmail } from "@/content/site";
+import { defaultCta, promoCards, salesEmail } from "@/content/site";
 
 /** Two columns: serif heading plus accent italic statement at left, body at right. */
 export function IntroSplit({
@@ -234,51 +233,6 @@ export function CtaBand({
 }
 
 /** The three linked industry cards above the five named-sector tiles. */
-export function IndustrySpecialisms() {
-  return (
-    <section className="pad-x py-20 max-md:py-14 max-sm:py-11">
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-        <h2 className="t-h2-minor text-[clamp(26px,3.4vw,40px)]">{industrySpecialisms.heading}</h2>
-        <p className="max-w-[340px] text-[15px] leading-[1.6] text-steel">{industrySpecialisms.subline}</p>
-      </div>
-
-      <div className="mb-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {industrySpecialisms.cards.map((card) => (
-          <Link
-            key={card.href}
-            href={card.href}
-            className="group block border border-rule bg-white transition-colors duration-[180ms] hover:border-ink"
-          >
-            <ImageSlot
-              brief={card.slot}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="h-[220px]"
-            />
-            <div className="flex items-center justify-between px-7 py-6">
-              <span className="font-display text-[28px]">{card.label}</span>
-              <ArrowDiagonal size={16} className="shrink-0 transition-colors duration-[180ms] group-hover:text-accent" />
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
-        {industrySpecialisms.tiles.map((tile) => (
-          <Link
-            key={tile.label}
-            href={tile.href}
-            className={`border border-rule px-6 py-[22px] text-[16px] font-semibold transition-colors duration-[180ms] hover:border-ink hover:text-accent ${
-              tile.label.startsWith("And more") ? "text-accent" : ""
-            }`}
-          >
-            {tile.label}
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /** The two tall promo cards shared by the service pages. */
 export function PromoCards() {
   return (

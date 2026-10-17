@@ -17,6 +17,8 @@ export function ImageTile({
   sizes = "(max-width: 768px) 100vw, 33vw",
   /** The service expertise tiles darken further, to carry a pill. */
   heavyScrim = false,
+  /** Dims the photograph towards the ink ground on hover. */
+  hoverFade = false,
   children,
 }: {
   href: string;
@@ -28,6 +30,7 @@ export function ImageTile({
   titleClass?: string;
   sizes?: string;
   heavyScrim?: boolean;
+  hoverFade?: boolean;
   children?: React.ReactNode;
 }) {
   const scrim = heavyScrim
@@ -35,8 +38,20 @@ export function ImageTile({
     : "bg-[linear-gradient(180deg,rgba(20,30,39,0)_32%,rgba(20,30,39,0.86)_100%)]";
 
   return (
-    <Link href={href} className={`group relative block overflow-hidden ${className}`}>
-      <ImageSlot brief={brief} alt={alt} sizes={sizes} className="absolute inset-0 h-full w-full" />
+    /*
+     * The fade needs an opaque ground of its own: without `bg-ink` the
+     * photograph would thin out towards the paper behind it and wash out
+     * rather than dim.
+     */
+    <Link href={href} className={`group relative block overflow-hidden ${hoverFade ? "bg-ink" : ""} ${className}`}>
+      <ImageSlot
+        brief={brief}
+        alt={alt}
+        sizes={sizes}
+        className={`absolute inset-0 h-full w-full ${
+          hoverFade ? "transition-opacity duration-[220ms] group-hover:opacity-85" : ""
+        }`}
+      />
       <div aria-hidden="true" className={`absolute inset-0 ${scrim}`} />
 
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-[clamp(24px,4vw,40px)] text-white">
