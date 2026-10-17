@@ -53,10 +53,16 @@ utilities like `bg-ink` and `text-steel` come straight from the handoff's
 palette. Display type uses `clamp()` through the `t-*` classes in the same
 file rather than per-breakpoint overrides.
 
-**Typography** is the handoff's pairing: Instrument Serif for display through
-`.font-display` and the `t-*` classes, Archivo for everything else. The site
-ran on Special Gothic for a while; the v2 brief restored the serif, and the
-display ramp went back to the brief's clamp values with it.
+**Typography** is one family, Instrument Sans: display at 600 through
+`.font-display` and the `t-*` classes, everything else at 400. It replaces the
+handoff's Instrument Serif and Archivo pairing. It ships a true italic, so the
+statement lines are drawn rather than synthesised.
+
+Display type carries `overflow-wrap: anywhere`. A single long token can be
+wider than its column at these sizes ("sourcing/manufacturing" in two service
+intros runs 409px at the 36px minimum, against a 342px column on a phone), and
+only `anywhere` lowers the min-content size that an auto-sized grid track
+measures. `break-word` breaks the line but leaves the track too wide.
 
 **The content layer** (`src/content/`) holds every piece of copy. It is taken
 verbatim from the prototypes, including the house style of no em dashes.

@@ -84,9 +84,11 @@ export function GalleryBrowser() {
                 sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="aspect-square"
               />
-              <figcaption className="flex items-center justify-between gap-3 px-5 py-4 max-sm:px-3">
+              {/* Side by side where there is room; stacked on a narrow phone,
+                  where the tag alone is wider than half a tile. */}
+              <figcaption className="flex flex-col gap-1 px-5 py-4 max-sm:px-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                 <span className="text-[15px] font-semibold">{item.name}</span>
-                <span className="shrink-0 text-[12px] uppercase tracking-[0.1em] text-steel">{item.industry}</span>
+                <span className="text-[12px] uppercase tracking-[0.1em] text-steel sm:shrink-0">{item.industry}</span>
               </figcaption>
             </figure>
           ))}
