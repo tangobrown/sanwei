@@ -7,7 +7,8 @@ import { ImageTextSplit } from "@/components/sections/ImageTextSplit";
 import { IndustrySpecialismsV2 } from "@/components/sections/IndustrySpecialismsV2";
 import { ExpertiseTiles } from "@/components/sections/ExpertiseTiles";
 import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
-import { ClientReferenceBand, ServicesList } from "@/components/sections/Bands";
+import { ClientReferenceBand } from "@/components/sections/Bands";
+import { ServicesPanel } from "@/components/sections/ServicesPanel";
 import { BeyondProducts, HoweverBand, IntroGallery, RiskFactors, SolutionBand } from "@/components/sections/ServiceBlocks";
 import { getService, services } from "@/content/services";
 import { emphasise } from "@/lib/emphasis";
@@ -122,7 +123,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <ExpertiseTiles briefs={service.tileImages} />
 
-      <ServicesList heading="All services" className="border-t border-rule" />
+      <ServicesPanel heading="All services" />
 
       <ClientReferenceBand reference={service.reference} />
 

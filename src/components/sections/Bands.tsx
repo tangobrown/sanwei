@@ -4,7 +4,7 @@ import { ArrowLink, PillLink } from "@/components/ui/Buttons";
 import { ArrowDiagonal } from "@/components/ui/Icons";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import type { ClientReference } from "@/content/site";
-import { defaultCta, industrySpecialisms, promoCards, salesEmail, serviceListOrder } from "@/content/site";
+import { defaultCta, industrySpecialisms, promoCards, salesEmail } from "@/content/site";
 
 /** Two columns: serif heading plus accent italic statement at left, body at right. */
 export function IntroSplit({
@@ -286,60 +286,6 @@ export function PromoCards() {
           </PillLink>
         </div>
       ))}
-    </section>
-  );
-}
-
-/** The nine services as a scannable hairline list. */
-export function ServicesList({
-  heading,
-  subline,
-  className = "",
-  tone = "card",
-}: {
-  heading: string;
-  subline?: string;
-  className?: string;
-  /**
-   * The homepage runs this panel on a blue ground. `steel-deep` rather than
-   * `steel`, because white on `steel` reaches only 4.04:1 and the links are
-   * 18px. Service pages keep the card treatment.
-   */
-  tone?: "card" | "blue";
-}) {
-  const blue = tone === "blue";
-
-  return (
-    <section className={`pad-x py-20 max-md:py-14 max-sm:py-11 ${className}`}>
-      <div className={`p-14 max-md:p-6 ${blue ? "bg-steel-deep text-white" : "border border-rule bg-card"}`}>
-        <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="t-h2-minor max-w-[720px]">{heading}</h2>
-          {subline ? (
-            <p className={`max-w-[340px] text-[15px] leading-[1.7] ${blue ? "text-white" : "text-steel"}`}>
-              {subline}
-            </p>
-          ) : null}
-        </div>
-        <div className="grid gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
-          {serviceListOrder.map((service) => (
-            <Link
-              key={service.label}
-              href={service.href}
-              className={`group flex items-center justify-between border-b py-[17px] text-[18px] transition-colors duration-[180ms] ${
-                blue ? "border-white/30 hover:border-white" : "border-rule-soft hover:text-accent"
-              }`}
-            >
-              <span>{service.label}</span>
-              <ArrowDiagonal
-                size={16}
-                className={`shrink-0 transition-colors duration-[180ms] ${
-                  blue ? "group-hover:text-accent-pale" : "group-hover:text-accent"
-                }`}
-              />
-            </Link>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

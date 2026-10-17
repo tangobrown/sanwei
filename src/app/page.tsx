@@ -123,7 +123,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ServicesPanel />
+      <ServicesPanel
+        heading="Our services focus on bringing your project to fruition."
+        subline="Sanwei really is an extension of your procurement team in Asia."
+      />
 
       <QuoteCarousel references={clientReferences} />
 
