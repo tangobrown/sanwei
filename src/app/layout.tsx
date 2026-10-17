@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
+import { Archivo, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-/**
- * One family across the whole site: display type at 600, everything else at
- * 400. Instrument Sans ships a true italic, so the statement lines are drawn
- * rather than synthesised.
- */
-const instrumentSans = Instrument_Sans({
+const archivo = Archivo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+/** Display face. Always weight 400; the italic carries the statement lines. */
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-instrument-sans",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -38,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={instrumentSans.variable}>
+    <html lang="en" className={`${archivo.variable} ${instrumentSerif.variable}`}>
       <body className="font-sans">
         <a
           href="#main"

@@ -33,8 +33,8 @@
   --color-slot: #dce4e9;
   --color-disabled: #a9b8c4;
 
-  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
 
   /* Border radius is 0 everywhere; pills are the single exception. */
   --radius-pill: 100px;
@@ -100,10 +100,10 @@
 }
 
 @layer components {
-  /* Display type: the family and its 600 weight travel together. */
+  /* Display type: the family and its weight travel together. */
   .font-display {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
   }
 
   /*
@@ -125,7 +125,7 @@
   /* Sized for Special Gothic 600, which sets wider than the serif it replaced. */
   .t-hero-home {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(40px, 7vw, 88px);
     line-height: 0.92;
     letter-spacing: -0.02em;
@@ -134,7 +134,7 @@
 
   .t-hero {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(56px, 7vw, 96px);
     line-height: 0.95;
     letter-spacing: -0.02em;
@@ -144,7 +144,7 @@
   /* Service names run long, so they set a size smaller and balance. */
   .t-hero-service {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(52px, 6.6vw, 88px);
     line-height: 0.95;
     letter-spacing: -0.02em;
@@ -153,7 +153,7 @@
 
   .t-page-title {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(38px, 7vw, 76px);
     line-height: 0.98;
     letter-spacing: -0.02em;
@@ -162,7 +162,7 @@
 
   .t-h2-major {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(36px, 4.4vw, 52px);
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -171,7 +171,7 @@
 
   .t-h2-minor {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(26px, 3.6vw, 44px);
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -180,7 +180,7 @@
 
   .t-h3 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(24px, 3vw, 38px);
     line-height: 1.12;
     text-wrap: pretty;
@@ -189,7 +189,7 @@
   .t-hero-sub {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(21px, 2.3vw, 28px);
     line-height: 1.25;
     text-wrap: pretty;
@@ -198,7 +198,7 @@
   .t-statement {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(22px, 2.4vw, 26px);
     line-height: 1.22;
     text-wrap: pretty;
@@ -207,7 +207,7 @@
   .t-quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(19px, 2.3vw, 30px);
     line-height: 1.3;
     text-wrap: pretty;
@@ -216,7 +216,7 @@
   .t-statement-sm {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(20px, 2.6vw, 32px);
     line-height: 1.25;
     text-wrap: pretty;
