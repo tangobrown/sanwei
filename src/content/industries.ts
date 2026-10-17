@@ -27,8 +27,6 @@ export type Industry = {
   };
   /** Portrait close crop that rises into the hero and sticks beside the intro. */
   introImage: string;
-  /** Audio and Other Industries claim 30+ years, so only they show the badge. */
-  badge?: { value: string; label: string };
   /** Only Automotive carries the electrification band. */
   featureBand?: {
     eyebrow: string;
@@ -75,7 +73,6 @@ export const industries: Industry[] = [
   {
     slug: "audio",
     introImage: "Speaker driver or audio assembly, close crop, portrait",
-    badge: { value: "30+", label: "Years of industry experience" },
     name: "Audio",
     cardTitle: "Audio",
     cardBody: "Components and complex final products for consumer electronic & related industries.",
@@ -223,7 +220,6 @@ export const industries: Industry[] = [
   {
     slug: "other-industries",
     introImage: "Precision machined part, close crop, portrait",
-    badge: { value: "30+", label: "Years of industry experience" },
     name: "Other industries",
     cardTitle: "Other industries",
     cardBody: "Need complex, high-quality parts for your manufacturing project? We can help.",

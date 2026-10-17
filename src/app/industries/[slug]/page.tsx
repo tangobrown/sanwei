@@ -44,7 +44,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         cta={{ label: "Get in touch", href: "/contact" }}
       />
 
-      <IntroWithStickyImage image={{ brief: industry.introImage }} badge={industry.badge}>
+      <IntroWithStickyImage image={{ brief: industry.introImage }}>
         <h2 className="t-h2-major mb-6">{industry.intro.heading}</h2>
         <p className="border-b border-rule pb-6 font-display text-[clamp(22px,2.4vw,26px)] italic leading-[1.3] text-accent">
           {industry.intro.statement}
