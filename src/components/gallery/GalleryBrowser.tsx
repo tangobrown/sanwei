@@ -87,16 +87,7 @@ export function GalleryBrowser() {
                 sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="aspect-square"
               />
-              {/*
-               * The tags sit under the name rather than beside it: a part filed
-               * under three categories squeezed the name to one word per line.
-               */}
-              <figcaption className="px-5 py-4 max-sm:px-3">
-                <span className="block text-[15px] font-semibold">{item.name}</span>
-                <span className="mt-[6px] block text-[12px] uppercase tracking-[0.1em] text-steel">
-                  {item.categories.join(" · ")}
-                </span>
-              </figcaption>
+              <figcaption className="px-5 py-4 text-[15px] font-semibold max-sm:px-3">{item.name}</figcaption>
             </figure>
           ))}
         </div>
