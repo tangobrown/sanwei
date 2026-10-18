@@ -88,7 +88,7 @@ export function Header() {
   const sectionActive = (key: MenuKey) => pathname.startsWith(key === "industries" ? "/industries" : "/services");
 
   const linkClass = (active: boolean) =>
-    `pb-[2px] text-[14px] transition-colors duration-[180ms] ${
+    `pb-[2px] text-[16px] transition-colors duration-[180ms] ${
       active ? "border-b border-accent font-semibold text-accent" : "text-ink hover:text-accent"
     }`;
 
@@ -149,7 +149,7 @@ export function Header() {
                           key={link.href}
                           href={link.href}
                           aria-current={current ? "page" : undefined}
-                          className={`block px-4 py-3 text-[14px] transition-colors duration-[180ms] ${
+                          className={`block px-4 py-3 text-[15px] transition-colors duration-[180ms] ${
                             current ? "bg-paper font-semibold text-accent" : "hover:bg-paper"
                           }`}
                         >
@@ -175,7 +175,7 @@ export function Header() {
           <Link
             href="/contact"
             aria-current={isActive("/contact") ? "page" : undefined}
-            className="rounded-pill bg-ink px-6 py-3 text-[14px] text-on-dark transition-colors duration-[180ms] hover:bg-accent"
+            className="rounded-pill bg-ink px-6 py-3 text-[15px] text-on-dark transition-colors duration-[180ms] hover:bg-accent"
           >
             Contact us
           </Link>
