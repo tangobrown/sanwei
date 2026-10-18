@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!industry) return {};
 
   return {
-    title: industry.name,
-    description: industry.heroSubline,
+    title: industry.seo.title,
+    description: industry.seo.description,
     alternates: { canonical: `/industries/${industry.slug}` },
   };
 }

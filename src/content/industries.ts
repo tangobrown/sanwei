@@ -6,6 +6,8 @@ export type IndustryStep = {
 
 export type Industry = {
   slug: string;
+  /** Search metadata; see the note on Service.seo. */
+  seo: { title: string; description: string };
   /** The H1 and the nav label. */
   name: string;
   /** Short label used on the homepage card. */
@@ -72,6 +74,11 @@ const sharedSteps = (secondLabel: string, thirdLabel: string): IndustryStep[] =>
 export const industries: Industry[] = [
   {
     slug: "audio",
+    seo: {
+      title: "Audio component sourcing and manufacture",
+      description:
+        "Sanwei supplies grilles, drive units, housings and complete assemblies to leading audio brands, with over 30 years of sourcing and manufacturing in Asia.",
+    },
     introImage: "Speaker driver or audio assembly, close crop, portrait",
     name: "Audio",
     cardTitle: "Audio",
@@ -117,6 +124,11 @@ export const industries: Industry[] = [
   },
   {
     slug: "automotive",
+    seo: {
+      title: "Automotive parts sourcing in Asia",
+      description:
+        "Precision automotive components and assemblies sourced and manufactured across Asia: castings, brackets, ducting, hoses and fluid lines, to OEM standards.",
+    },
     introImage: "Automotive component or EV battery assembly, close crop, portrait",
     name: "Automotive",
     cardTitle: "Automotive",
@@ -172,6 +184,11 @@ export const industries: Industry[] = [
   },
   {
     slug: "marine",
+    seo: {
+      title: "Marine parts and engine components",
+      description:
+        "Engine components, assemblies and boat parts made to challenging marine specifications, sourced and manufactured through our supplier network across Asia.",
+    },
     introImage: "Marine engine component, close crop, portrait",
     name: "Marine",
     cardTitle: "Marine",
@@ -219,6 +236,11 @@ export const industries: Industry[] = [
   },
   {
     slug: "other-industries",
+    seo: {
+      title: "Other industries we supply",
+      description:
+        "Energy, aerospace, hardware, military and more. Whatever your industry, our 30 years of part sourcing and manufacturing deliver on time and on budget.",
+    },
     introImage: "Precision machined part, close crop, portrait",
     name: "Other industries",
     cardTitle: "Other industries",

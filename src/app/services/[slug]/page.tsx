@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
 
   return {
-    title: service.name,
-    description: service.heroSubline,
+    title: service.seo.title,
+    description: service.seo.description,
     alternates: { canonical: `/services/${service.slug}` },
   };
 }

@@ -6,7 +6,8 @@ import { privacyPolicy } from "@/content/legal";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
-  description: "How Sanwei Group collects, uses and discloses the personal information you share with us.",
+  description:
+    "How Sanwei Group collects, uses and discloses the personal information you share with us, covering log data, cookies, communications and security.",
   alternates: { canonical: "/privacy" },
 };
 

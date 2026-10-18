@@ -21,6 +21,9 @@ export type DetailBlock = {
 
 export type Service = {
   slug: string;
+  /** Search metadata. Written per page, since the hero subline is a tagline
+   *  rather than a description. */
+  seo: { title: string; description: string };
   name: string;
   heroSubline: string;
   /** Rises into the hero and sticks beside the intro copy. Tooling has none:
@@ -68,6 +71,11 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "customer-service",
+    seo: {
+      title: "Customer service and project support",
+      description:
+        "Unlimited access to Sanwei's engineers, with 24/7 support for technical issues, supply chain management, engineering advice and project management.",
+    },
     introImage: "Desk, monitors, hands on keyboard",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Customer Service",
@@ -101,6 +109,11 @@ export const services: Service[] = [
   },
   {
     slug: "engineering-consulting",
+    seo: {
+      title: "Engineering consulting for your project",
+      description:
+        "Consultative engineering advice on feasibility, materials, tolerances and processes, so your parts are right long before production begins in earnest.",
+    },
     introImage: "CAD model on screen, close crop",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Engineering Consulting",
@@ -126,6 +139,11 @@ export const services: Service[] = [
   },
   {
     slug: "fluid-technologies",
+    seo: {
+      title: "Fluid technologies: hoses and pipes",
+      description:
+        "Water and oil hoses, fuel pipes, breather hoses, turbo feed and drain lines, PAS, HVAC and EV cooling, manufactured and sourced to OEM specification.",
+    },
     introImage: "Hose and pipe assembly, close crop",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Fluid Technologies",
@@ -158,6 +176,11 @@ export const services: Service[] = [
   },
   {
     slug: "manufacturing",
+    seo: {
+      title: "Manufacturing in our Taiwan factory",
+      description:
+        "Complex, technical, high value manufacturing from our factory in Taiwan and a trusted supplier network across Asia, for quality parts at Asian costs.",
+    },
     introImage: "Welding / laser cutting, close crop",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Manufacturing",
@@ -187,6 +210,11 @@ export const services: Service[] = [
   },
   {
     slug: "project-management",
+    seo: {
+      title: "Project management for sourcing in Asia",
+      description:
+        "Sanwei manages your project end to end, removing the risks of sourcing in Asia: overpaying, poor quality, misread briefs and slow, costly shipping.",
+    },
     introImage: "Programme plan / Gantt on screen",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Project Management",
@@ -248,6 +276,11 @@ export const services: Service[] = [
   },
   {
     slug: "prototyping",
+    seo: {
+      title: "Prototyping, from concept to reality",
+      description:
+        "From rapid prototypes to parts machined from solid and off tool production, we guide your project through every iteration before you commit to tooling.",
+    },
     introImage: "Prototype part, fully machined from solid",
     introCarousel: [
       { brief: "Prototype stage, rapid prototyping", caption: "Rapid prototyping" },
@@ -276,6 +309,11 @@ export const services: Service[] = [
   },
   {
     slug: "quality-control",
+    seo: {
+      title: "Quality control and inspection",
+      description:
+        "Incoming material inspection, first article approval, pre-shipment checks and IATF 16949 auditing. Our quality control checks are second to none.",
+    },
     introImage: "Robotic inspection arm on a part",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Quality Control",
@@ -340,6 +378,11 @@ export const services: Service[] = [
   },
   {
     slug: "supply-chain-management",
+    seo: {
+      title: "Supply chain management in Asia",
+      description:
+        "Worldwide logistics, SAP controlled purchasing and quality records, synchronising supply with demand so your parts ship on time at the best possible cost.",
+    },
     introImage: "Warehouse stock check with tablet",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Supply Chain Management",
@@ -364,6 +407,11 @@ export const services: Service[] = [
   },
   {
     slug: "tooling",
+    seo: {
+      title: "Tooling design and manufacture",
+      description:
+        "The right tool decides a part's quality, cost and efficiency. Sanwei recommends, designs and supplies tooling that matches your demand and expectations.",
+    },
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Tooling",
     heroSubline: "Building the best parts to build your parts.",

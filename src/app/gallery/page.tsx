@@ -3,11 +3,12 @@ import { Suspense } from "react";
 import { CtaBand } from "@/components/sections/Bands";
 import { ArrowLink } from "@/components/ui/Buttons";
 import { GalleryBrowser } from "@/components/gallery/GalleryBrowser";
+import { galleryItems } from "@/content/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Parts gallery: audio, automotive, marine",
   description:
-    "A cross-section of recent work across audio, automotive, marine and beyond. Filter by category to see parts Sanwei has made and sourced.",
+    `Browse ${galleryItems.length} parts Sanwei has made and sourced across audio, automotive, fluid technologies and marine. Filter by category, then quote a part number.`,
   alternates: { canonical: "/gallery" },
 };
 

@@ -10,9 +10,10 @@ import { PillLink } from "@/components/ui/Buttons";
 import { clientReferences } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Sanwei Asia | Part sourcing, manufacturing and project management",
+  title: "Part sourcing and manufacturing in Asia | Sanwei Asia",
   description:
-    "Discover the missing pieces of your supply chain and manufacturing puzzle. Sanwei sources, manufactures and project-manages high-value components for the audio, automotive and marine industries.",
+    "Sanwei sources, manufactures and project manages high value parts from our factory in Taiwan and across Asia, for audio, automotive and marine OEMs.",
+  alternates: { canonical: "/" },
 };
 
 /**

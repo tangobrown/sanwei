@@ -4,9 +4,9 @@ import { OfficeMap } from "@/components/contact/OfficeMap";
 import { offices, salesEmail } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Contact us",
+  title: "Contact us in Taiwan and the UK",
   description:
-    "Tell us what you need sourced, made or managed. Our team in Taipei and the UK will come back to you with a route forward.",
+    "Tell us what you need sourced, made or managed. Offices in Taipei, Taiwan and Axminster, UK. Send a message, email the team or call us direct.",
   alternates: { canonical: "/contact" },
 };
 

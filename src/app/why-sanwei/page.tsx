@@ -6,9 +6,9 @@ import { ImageSlot } from "@/components/ui/ImageSlot";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Why Sanwei?",
+  title: "About us and our engineering team",
   description:
-    "Sanwei Technical Ltd is an Asia based part sourcing, project management, engineering and manufacturing company, with a factory in Taiwan and a customer-facing presence in the UK.",
+    "Meet the Sanwei team. An Asia based sourcing, manufacturing and project management company with a factory in Taiwan, a UK presence and 30 years of OEM work.",
   alternates: { canonical: "/why-sanwei" },
 };
 

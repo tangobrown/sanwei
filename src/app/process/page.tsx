@@ -7,9 +7,9 @@ import { referenceByRole } from "@/content/site";
 import { processSteps } from "@/content/process";
 
 export const metadata: Metadata = {
-  title: "Our process",
+  title: "Our process, from NDA to delivery",
   description:
-    "Eight stages, from the NDA that protects your design to the shipment that lands on your dock. A tried-and-tested method for sourcing success.",
+    "Eight stages, from the NDA that protects your design to the shipment that lands on your dock. See how Sanwei runs a sourcing or manufacturing project in Asia.",
   alternates: { canonical: "/process" },
 };
 
