@@ -141,12 +141,22 @@ export function DetailBand({
 }
 
 /** A list of short points rendered as hairline-topped rows inside a dark panel. */
-export function PanelList({ items }: { items: string[] }) {
+export function PanelList({ items }: { items: (string | { text: string; items: string[] })[] }) {
+  /* A nested point keeps its children, set in from the rule they sit under. */
+  const rows = items.flatMap((item) =>
+    typeof item === "string"
+      ? [{ text: item, nested: false }]
+      : [{ text: item.text, nested: false }, ...item.items.map((child) => ({ text: child, nested: true }))],
+  );
+
   return (
     <div className="mt-5 grid gap-x-7 gap-y-[10px] sm:grid-cols-2">
-      {items.map((item) => (
-        <p key={item} className="border-t border-white/30 py-[10px] text-[15px] leading-[1.5]">
-          {item}
+      {rows.map((row) => (
+        <p
+          key={row.text}
+          className={`border-t border-white/30 py-[10px] text-[15px] leading-[1.5] ${row.nested ? "pl-4" : ""}`}
+        >
+          {row.text}
         </p>
       ))}
     </div>

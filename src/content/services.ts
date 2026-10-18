@@ -9,7 +9,8 @@ export type DetailBlock = {
   /** A second heading/paragraph pair inside the same panel. */
   secondary?: { heading: string; paragraphs: string[] };
   listIntro?: string;
-  list?: string[];
+  /** A string is a plain bullet; an object carries its own sub-bullets. */
+  list?: (string | { text: string; items: string[] })[];
   /** Renders on the `ink` ground rather than `steel`. */
   tone?: "steel" | "ink";
   ctaLabel?: string;
@@ -84,11 +85,15 @@ export const services: Service[] = [
       list: [
         "Material selection",
         "Part and tool design",
-        "Manufacturing technologies, with the goal of:",
-        "Isolating potential problem areas",
-        "Optimising product design",
-        "Reducing manufacturing costs",
-        "Improving manufacturability",
+        {
+          text: "Manufacturing technologies, with the goal of:",
+          items: [
+            "Isolating potential problem areas",
+            "Optimising product design",
+            "Reducing manufacturing costs",
+            "Improving manufacturability",
+          ],
+        },
       ],
     },
     reference: referenceByRole.purchasingManager,
