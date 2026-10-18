@@ -122,7 +122,7 @@ export function SolutionBand({ solution }: { solution: NonNullable<Service["solu
 export function BeyondProducts({ beyond }: { beyond: NonNullable<Service["beyond"]> }) {
   return (
     <section className="pad-x border-t border-rule py-20 max-md:py-14 max-sm:py-11">
-      <h2 className="t-h2-minor mb-4">{beyond.heading}</h2>
+      <h2 className="t-h2-minor mb-6">{beyond.heading}</h2>
       <p className="t-lead mb-10 text-ink-soft">{beyond.intro}</p>
       <HairlineGrid columns={{ base: 1, sm: 1, lg: 2 }} className="lg:grid-cols-2">
         {beyond.columns.map((column) => (

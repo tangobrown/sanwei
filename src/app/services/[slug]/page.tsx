@@ -42,7 +42,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <>
       <div>
         {service.standfirst ? <p className="t-lead mb-8 text-ink-soft">{service.standfirst}</p> : null}
-        <h2 className="t-h2-major">{service.intro.heading}</h2>
+        <h2 className="t-h2-major mb-7">{service.intro.heading}</h2>
       </div>
       <div className="flex flex-col gap-5">
         {service.intro.paragraphs.map((paragraph) => (
