@@ -38,6 +38,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   // Project Management's detail band follows the tinted "The solution?" band,
   // so it needs padding above; every other page continues from white.
   /* The bands that run full width leave the detail block hard against them. */
+  const introCopy = (
+    <>
+      <div>
+        {service.standfirst ? <p className="t-lead mb-8 text-ink-soft">{service.standfirst}</p> : null}
+        <h2 className="t-h2-major">{service.intro.heading}</h2>
+      </div>
+      <div className="flex flex-col gap-5">
+        {service.intro.paragraphs.map((paragraph) => (
+          <p key={paragraph} className="t-body text-ink-soft">
+            {emphasise(paragraph)}
+          </p>
+        ))}
+      </div>
+    </>
+  );
+
   const detailNeedsTopPadding = Boolean(service.solution || service.beyond);
 
   return (
@@ -50,17 +66,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         titleClass="t-hero-service"
       />
 
-      <IntroWithStickyImage image={{ brief: service.introImage }} carousel={service.introCarousel}>
-        {service.standfirst ? <p className="t-lead mb-8 text-ink-soft">{service.standfirst}</p> : null}
-        <h2 className="t-h2-major mb-7">{service.intro.heading}</h2>
-        <div className="flex flex-col gap-5">
-          {service.intro.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="t-body text-ink-soft">
-              {emphasise(paragraph)}
-            </p>
-          ))}
-        </div>
-      </IntroWithStickyImage>
+      {service.introImage || service.introCarousel ? (
+        <IntroWithStickyImage image={{ brief: service.introImage ?? "" }} carousel={service.introCarousel}>
+          {introCopy}
+        </IntroWithStickyImage>
+      ) : (
+        /* No photograph to sit beside, so the heading takes the left column. */
+        <section className="pad-x grid items-start gap-20 bg-white pb-32 pt-24 max-md:gap-10 max-md:pb-16 max-md:pt-12 lg:grid-cols-2">
+          {introCopy}
+        </section>
+      )}
 
       {service.introGallery ? <IntroGallery images={service.introGallery} /> : null}
 

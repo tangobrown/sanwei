@@ -23,8 +23,9 @@ export type Service = {
   slug: string;
   name: string;
   heroSubline: string;
-  /** Rises into the hero and sticks beside the intro copy. */
-  introImage: string;
+  /** Rises into the hero and sticks beside the intro copy. Tooling has none:
+   *  its intro sets the heading against the copy instead. */
+  introImage?: string;
   /** The expertise and process tiles at the foot of the page. */
   tileImages: [string, string];
   /** Project Management alone carries a standfirst above the intro. */
@@ -32,7 +33,6 @@ export type Service = {
   intro: {
     heading: string;
     paragraphs: string[];
-    image: string;
   };
   /** Tooling shows three further shots beneath its intro. */
   introGallery?: string[];
@@ -79,7 +79,6 @@ export const services: Service[] = [
         "That's why our 30+ years of experience are so integral to the standard of customer service that Sanwei provides. The vast knowledge base we've accrued allows us to build valuable consultancy into all aspects of our customer interactions and communications.",
         "All of our customers have unlimited access to our resources and in-house skills. Our customer service team offers 24/7 support for technical issues, supply chain management, engineering advice and general project management.",
       ],
-      image: "Desk, monitors, hands on keyboard",
     },
     detail: {
       image: "Engineers at a whiteboard",
@@ -113,7 +112,6 @@ export const services: Service[] = [
         "But we won't stop at answering specific questions that you put to us.",
         "As true engineering consultants we stay at the forefront of industry developments, keeping a sharp eye on trends and re-evaluating our processes to ensure they remain optimal. When working with us, you can be confident that we will proactively share our advice on feasibility, materials, tolerances, processes and much more.",
       ],
-      image: "CAD model on screen, close crop",
     },
     detail: {
       image: "Engineers reviewing a 3D assembly",
@@ -138,7 +136,6 @@ export const services: Service[] = [
         "Whether it's by transferring fuel to the engines at the heart of your build, or simply moving liquids from one place to another.",
         "With our precision-engineered pipe and hose assemblies, you can rest assured that the required amount of fluid you need will end up precisely where you want it to go. And in the most efficient way possible.",
       ],
-      image: "Hose and pipe assembly, close crop",
     },
     detail: {
       image: "EV chassis on the line",
@@ -172,7 +169,6 @@ export const services: Service[] = [
         "But if our factory isn't best suited to your specific needs, we also have a trusted network of providers across the continent, developed over 30 years of mutual assurance. If you're looking for quality commodity-type parts at Asian costs, we can help with that, too. This combined approach gives us the flexibility to offer you the best solution every time.",
         "Too many manufacturers either provide low quality products or charge unreasonable prices, forcing clients to make an impossible tradeoff. At Sanwei, we guarantee that you'll always receive top manufacturing quality for a fair price.",
       ],
-      image: "Welding / laser cutting, close crop",
     },
     detail: {
       image: "Robotic assembly cell",
@@ -204,7 +200,6 @@ export const services: Service[] = [
         "Particularly for the uninitiated. The vastness of the continent, potential language barrier and varying quality standards of factories can lead to a number of serious risk factors.",
         "All of which can severely affect the likelihood of delivering your desired results on time or on budget.",
       ],
-      image: "Programme plan / Gantt on screen",
     },
     riskFactors: {
       eyebrow: "The risk factors",
@@ -269,7 +264,6 @@ export const services: Service[] = [
         "There's a chance it'll arrive kicking, screaming and not fully functional, but we're here to guide you through the rough early stages and iterations until your prototype is refined into a smooth-functioning masterpiece.",
         "Getting things right at the prototyping stage is absolutely critical for overall project success. Issues that are a relatively cheap and easy fix before production begins in earnest can become the budget-draining stuff of manufacturing nightmares if they aren't spotted at this stage.",
       ],
-      image: "Prototype part, fully machined from solid",
     },
     detail: {
       image: "CNC milling, close crop",
@@ -294,7 +288,6 @@ export const services: Service[] = [
         "Our quality control checks are second to none. In fact, we're often trusted by long standing customers to audit, monitor and manage their proprietary supply bases in Asia, such is the level of confidence in our systems, work ethic and integrity.",
         "Our entire supplier network is thoroughly vetted by Sanwei, and is ISO 9000 and ISO 14000 quality assurance certified as a minimum. For machinery and items where product certification applies, our suppliers must apply industry standard quality control checks and retain all appropriate technical files.",
       ],
-      image: "Robotic inspection arm on a part",
     },
     beyond: {
       heading: "Beyond products",
@@ -358,7 +351,6 @@ export const services: Service[] = [
         "As an Asia-based organisation with three decades of experience working closely with world class customers, we have developed a competitive supply chain infrastructure by incorporating worldwide logistics, synchronizing supply with demand and measuring performance.",
         "We use SAP business management system to control purchase orders, invoices, works orders, quality control and much more. This allows us to ensure that your products are shipped on time at the best possible cost, whilst adhering to all the relevant regulations and requirements.",
       ],
-      image: "Warehouse stock check with tablet",
     },
     detail: {
       image: "Port, freight and logistics montage",
@@ -372,7 +364,6 @@ export const services: Service[] = [
   },
   {
     slug: "tooling",
-    introImage: "Tool design model, exploded view",
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Tooling",
     heroSubline: "Building the best parts to build your parts.",
@@ -383,7 +374,6 @@ export const services: Service[] = [
         "Not just for quality, either. Overall efficiency and manufacturing costs are also significantly influenced by tooling. Simply put, if you want your project to be a success, you need to get tooling right.",
         "We can help you do just that. Our decades of engineering and manufacturing experience mean we've encountered just about every kind of tool you can imagine, so we don't just know what works. We know what will work best for you.",
       ],
-      image: "Tool design model, exploded view",
     },
     introGallery: ["Tool design, CAD view", "Finished tool in the factory", "Tool packed for shipment"],
     detail: {
