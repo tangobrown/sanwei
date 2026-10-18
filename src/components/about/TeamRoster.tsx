@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ImageSlot } from "@/components/ui/ImageSlot";
+import { ArrowRight } from "@/components/ui/Icons";
 import type { TeamMember } from "@/content/team";
 
 /**
@@ -62,8 +63,8 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
                 aria-controls="team-panel"
                 tabIndex={active ? 0 : -1}
                 onClick={() => setSelected(i)}
-                className={`flex w-full items-baseline gap-5 border-b border-rule px-4 py-5 text-left transition-colors duration-[180ms] ${
-                  active ? "bg-paper text-accent" : "text-ink hover:bg-paper-tint hover:text-accent"
+                className={`group flex w-full items-baseline gap-5 border-b border-rule px-4 py-5 text-left transition-colors duration-[180ms] ${
+                  active ? "bg-paper text-accent" : "cursor-pointer text-ink hover:bg-paper-tint hover:text-accent"
                 }`}
               >
                 <span className={`text-[13px] ${active ? "text-accent" : "text-steel"}`}>
@@ -73,6 +74,13 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
                   <span className="block font-display text-[28px] leading-[1.1]">{person.name}</span>
                   <span className="mt-1 block text-[11px] uppercase tracking-[0.14em] text-steel">{person.role}</span>
                 </span>
+                {/* The arrow marks the rows there is still something to open. */}
+                {active ? null : (
+                  <ArrowRight
+                    size={18}
+                    className="ml-auto shrink-0 self-center text-steel transition-colors duration-[180ms] group-hover:text-accent"
+                  />
+                )}
               </button>
             );
           })}
