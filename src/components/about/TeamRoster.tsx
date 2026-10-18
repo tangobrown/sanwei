@@ -83,14 +83,11 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
           id="team-panel"
           aria-labelledby={`team-tab-${selected}`}
           tabIndex={0}
-          className="grid gap-10 motion-safe:animate-fade-up sm:grid-cols-[minmax(0,260px)_1fr]"
+          className="motion-safe:animate-fade-up"
           key={selected}
         >
-          <ImageSlot
-            brief={member.brief}
-            sizes="(max-width: 640px) 100vw, 260px"
-            className="aspect-[4/5] w-full"
-          />
+          {/* Portrait above the profile, in one column: a thumbnail, not a panel. */}
+          <ImageSlot brief={member.brief} sizes="150px" className="mb-8 aspect-[4/5] w-full max-w-[150px]" />
           <div>
             <h3 className="font-display text-[40px] leading-[1.1]">{member.name}</h3>
             <p className="mt-2 text-[12px] uppercase tracking-[0.14em] text-accent">{member.role}</p>

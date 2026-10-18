@@ -364,10 +364,8 @@ export const photos: Record<string, Photo> = {
   "Michael Ling": { src: "/photography/team-michael-ling.jpg", alt: "Michael Ling" },
   "Moulder Chen": { src: "/photography/team-moulder-chen.jpg", alt: "Moulder Chen" },
   "Sam Cheng": { src: "/photography/team-sam-cheng.jpg", alt: "Sam Cheng" },
-  // Generic silhouettes standing in until real portraits arrive. They carry
-  // no information, so they are marked decorative.
-  "Andy Cobbold": { src: "/photography/team-portrait-pending.jpg", alt: "" },
-  "Gareth Taylor": { src: "/photography/team-portrait-pending.jpg", alt: "" },
+  "Andy Cobbold": { src: "/photography/team-andy-cobbold.jpg", alt: "Andy Cobbold" },
+  "Gareth Taylor": { src: "/photography/team-gareth-taylor.jpg", alt: "Gareth Taylor" },
 };
 
 export function getPhoto(brief: string): Photo | undefined {
