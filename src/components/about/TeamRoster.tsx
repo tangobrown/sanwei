@@ -40,9 +40,10 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
 
   return (
     <section className="pad-x bg-white py-24 max-md:py-14">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <div className="mb-10">
         <h2 className="font-display text-[clamp(38px,4.4vw,52px)] leading-[1.05]">Let&rsquo;s meet the Sanwei team&hellip;</h2>
-        <p className="max-w-[340px] text-[15px] leading-[1.6] text-steel">
+        {/* Full width, so it sets on one line rather than breaking in a column. */}
+        <p className="mt-4 text-[15px] leading-[1.6] text-steel">
           Specialist engineers, quality auditors and supply chain managers across the UK and Taiwan.
         </p>
       </div>
