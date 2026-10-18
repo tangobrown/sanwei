@@ -37,7 +37,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const { detail } = service;
   // Project Management's detail band follows the tinted "The solution?" band,
   // so it needs padding above; every other page continues from white.
-  const detailNeedsTopPadding = Boolean(service.solution);
+  /* The bands that run full width leave the detail block hard against them. */
+  const detailNeedsTopPadding = Boolean(service.solution || service.beyond);
 
   return (
     <>

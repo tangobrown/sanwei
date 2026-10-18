@@ -123,7 +123,7 @@ export function BeyondProducts({ beyond }: { beyond: NonNullable<Service["beyond
   return (
     <section className="pad-x border-t border-rule py-20 max-md:py-14 max-sm:py-11">
       <h2 className="t-h2-minor mb-4">{beyond.heading}</h2>
-      <p className="mb-10 max-w-[760px] t-lead text-ink-soft">{beyond.intro}</p>
+      <p className="t-lead mb-10 text-ink-soft">{beyond.intro}</p>
       <HairlineGrid columns={{ base: 1, sm: 1, lg: 2 }} className="lg:grid-cols-2">
         {beyond.columns.map((column) => (
           <div key={column.title} className="bg-paper px-10 py-[34px] max-md:px-6">

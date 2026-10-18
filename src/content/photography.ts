@@ -20,6 +20,16 @@ export type Photo = {
 };
 
 export const photos: Record<string, Photo> = {
+  // Quality Control's two shots.
+  "Robotic inspection arm on a part": {
+    src: "/photography/robotic-inspection-arm.jpg",
+    alt: "A robotic arm lowers a probe onto a cast aluminium housing on the inspection bench.",
+  },
+  "Laser measurement on an engine block": {
+    src: "/photography/laser-measurement-engine-block.jpg",
+    alt: "A laser scanner traces the deck face of a machined V6 engine block on a measuring table.",
+  },
+
   // The prototyping page's three stages, from the gallery.
   "Prototype stage, rapid prototyping": {
     src: "/gallery/sw-150.jpg",
