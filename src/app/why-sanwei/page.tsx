@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 export default function WhySanweiPage() {
   return (
     <>
-      {/* No button on this hero, per the brief. */}
       <InteriorHero
         eyebrow="Why Sanwei?"
         title="About us"
         subline="Our team of specialist engineers are completely focused on helping you to achieve your goals."
+        cta={{ label: "Get in touch", href: "/contact" }}
       />
 
       <IntroWithStickyImage image={{ brief: "Company outing group photo" }}>
