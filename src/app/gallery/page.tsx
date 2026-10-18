@@ -7,7 +7,7 @@ import { GalleryBrowser } from "@/components/gallery/GalleryBrowser";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "A cross-section of recent work across audio, automotive, marine and beyond. Filter by industry to see parts Sanwei has made and sourced.",
+    "A cross-section of recent work across audio, automotive, marine and beyond. Filter by category to see parts Sanwei has made and sourced.",
   alternates: { canonical: "/gallery" },
 };
 
@@ -20,7 +20,7 @@ export default function GalleryPage() {
           <div className="max-w-[760px]">
             <h1 className="t-page-title mb-6">Parts we&rsquo;ve made and sourced.</h1>
             <p className="t-lead text-ink-soft">
-              A cross-section of recent work across audio, automotive, marine and beyond. Filter by industry, or send us
+              A cross-section of recent work across audio, automotive, marine and beyond. Filter by category, or send us
               a drawing and ask whether we&rsquo;ve made something like it before.
             </p>
           </div>

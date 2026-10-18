@@ -8,6 +8,7 @@ import { IndustrySpecialismsV2 } from "@/components/sections/IndustrySpecialisms
 import { ProcessTriptych } from "@/components/sections/Lists";
 import { WhyChooseCards } from "@/components/sections/WhyChooseCards";
 import { BatteryBand } from "@/components/sections/BatteryBand";
+import { galleryCategories } from "@/content/gallery";
 import { getIndustry, industries } from "@/content/industries";
 import { emphasise } from "@/lib/emphasis";
 
@@ -32,9 +33,13 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const industry = getIndustry(slug);
   if (!industry) notFound();
 
-  const galleryHref = `/gallery?industry=${encodeURIComponent(
-    industry.slug === "other-industries" ? "Other industries" : industry.name,
-  )}`;
+  /*
+   * The gallery filters are the categories the photographs arrived in, so
+   * only deep-link where one matches. Other Industries has no category of
+   * its own and opens the unfiltered grid.
+   */
+  const galleryCategory = galleryCategories.find((category) => category === industry.name);
+  const galleryHref = galleryCategory ? `/gallery?industry=${encodeURIComponent(galleryCategory)}` : "/gallery";
 
   return (
     <>

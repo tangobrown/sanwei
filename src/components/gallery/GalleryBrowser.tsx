@@ -20,7 +20,8 @@ export function GalleryBrowser() {
   const requestedFilter = searchParams.get("industry");
   const filter = galleryFilters.find((option) => option === requestedFilter) ?? ALL;
 
-  const filtered = filter === ALL ? galleryItems : galleryItems.filter((item) => item.industry === filter);
+  const filtered =
+    filter === ALL ? galleryItems : galleryItems.filter((item) => item.categories.some((c) => c === filter));
   const pageCount = Math.max(1, Math.ceil(filtered.length / GALLERY_PER_PAGE));
 
   const requestedPage = Number.parseInt(searchParams.get("page") ?? "1", 10);
@@ -50,7 +51,7 @@ export function GalleryBrowser() {
   return (
     <>
       <div className="pad-x flex flex-wrap items-center justify-between gap-4 pb-5">
-        <div className="flex flex-wrap gap-[10px]" role="group" aria-label="Filter parts by industry">
+        <div className="flex flex-wrap gap-[10px]" role="group" aria-label="Filter parts by category">
           {galleryFilters.map((option) => {
             const active = option === filter;
             return (
@@ -78,17 +79,23 @@ export function GalleryBrowser() {
       <div ref={gridRef} className="pad-x pb-14 max-md:pb-10">
         <div className="grid grid-cols-2 gap-5 max-sm:gap-3 lg:grid-cols-3 xl:grid-cols-4">
           {visible.map((item) => (
-            <figure key={`${item.industry}-${item.name}`} className="border border-rule bg-card">
+            <figure key={item.file} className="border border-rule bg-card">
               <ImageSlot
-                brief={item.brief}
+                brief={item.name}
+                src={`/gallery/${item.file}`}
+                alt={item.name}
                 sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="aspect-square"
               />
-              {/* Side by side where there is room; stacked on a narrow phone,
-                  where the tag alone is wider than half a tile. */}
-              <figcaption className="flex flex-col gap-1 px-5 py-4 max-sm:px-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-                <span className="text-[15px] font-semibold">{item.name}</span>
-                <span className="text-[12px] uppercase tracking-[0.1em] text-steel sm:shrink-0">{item.industry}</span>
+              {/*
+               * The tags sit under the name rather than beside it: a part filed
+               * under three categories squeezed the name to one word per line.
+               */}
+              <figcaption className="px-5 py-4 max-sm:px-3">
+                <span className="block text-[15px] font-semibold">{item.name}</span>
+                <span className="mt-[6px] block text-[12px] uppercase tracking-[0.1em] text-steel">
+                  {item.categories.join(" · ")}
+                </span>
               </figcaption>
             </figure>
           ))}
