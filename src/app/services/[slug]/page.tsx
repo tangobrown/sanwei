@@ -49,7 +49,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         titleClass="t-hero-service"
       />
 
-      <IntroWithStickyImage image={{ brief: service.introImage }}>
+      <IntroWithStickyImage image={{ brief: service.introImage }} carousel={service.introCarousel}>
         {service.standfirst ? <p className="t-lead mb-8 text-ink-soft">{service.standfirst}</p> : null}
         <h2 className="t-h2-major mb-7">{service.intro.heading}</h2>
         <div className="flex flex-col gap-5">

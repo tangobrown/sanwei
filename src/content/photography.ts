@@ -20,6 +20,23 @@ export type Photo = {
 };
 
 export const photos: Record<string, Photo> = {
+  // The prototyping page's three stages, from the gallery.
+  "Prototype stage, rapid prototyping": {
+    src: "/gallery/sw-150.jpg",
+    alt: "A prototype fuel rail with its fittings assembled.",
+    fit: "contain",
+  },
+  "Prototype stage, machined from solid": {
+    src: "/gallery/sw-151.jpg",
+    alt: "The same rail machined from solid, finished and ready to measure.",
+    fit: "contain",
+  },
+  "Prototype stage, off tool production": {
+    src: "/gallery/sw-152.jpg",
+    alt: "The rail as an off tool production part.",
+    fit: "contain",
+  },
+
   // The automotive and marine showcases, likewise from the gallery.
   "Automotive part 01": {
     src: "/gallery/sw-149.jpg",

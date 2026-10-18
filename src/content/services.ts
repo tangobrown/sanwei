@@ -36,6 +36,8 @@ export type Service = {
   };
   /** Tooling shows three further shots beneath its intro. */
   introGallery?: string[];
+  /** Shown in place of the intro image, one slide at a time. */
+  introCarousel?: { brief: string; caption: string }[];
   /** Project Management's numbered risk-factor band. */
   riskFactors?: { eyebrow: string; points: string[] };
   /** Project Management's "However..." section. */
@@ -252,6 +254,11 @@ export const services: Service[] = [
   {
     slug: "prototyping",
     introImage: "Prototype part, fully machined from solid",
+    introCarousel: [
+      { brief: "Prototype stage, rapid prototyping", caption: "Rapid prototyping" },
+      { brief: "Prototype stage, machined from solid", caption: "Fully machined from solid" },
+      { brief: "Prototype stage, off tool production", caption: "Off tool production part" },
+    ],
     tileImages: ["Sanwei engineer reviewing a part with a client", "QC inspection, measuring a component"],
     name: "Prototyping",
     heroSubline: "Taking your project from concept to reality.",

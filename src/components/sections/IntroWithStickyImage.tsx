@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ImageSlot } from "@/components/ui/ImageSlot";
+import { ImageCarousel, type CarouselSlide } from "@/components/sections/ImageCarousel";
 
 /**
  * The intro that sits under `InteriorHero`. Its image rises 300px into the
@@ -11,9 +12,12 @@ import { ImageSlot } from "@/components/ui/ImageSlot";
  */
 export function IntroWithStickyImage({
   image,
+  carousel,
   children,
 }: {
   image: { brief: string; alt?: string };
+  /** Prototyping shows three stages here rather than a single shot. */
+  carousel?: CarouselSlide[];
   children: ReactNode;
 }) {
   return (
@@ -24,13 +28,24 @@ export function IntroWithStickyImage({
        * Desktop: pulled up over the hero and sticky beneath the 92px header.
        * Mobile: neither, so it simply follows the copy.
        */}
-      <div className="relative lg:sticky lg:top-[116px] lg:z-[2] lg:-mt-[396px]">
-        <ImageSlot
-          brief={image.brief}
-          alt={image.alt}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="h-[clamp(420px,44vw,580px)] shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-md:h-[320px]"
-        />
+      {/*
+       * The single shot rises into the hero; the carousel does not. Its
+       * controls would straddle the band edge, and a white panel cutting
+       * across the dark hero reads as a mistake.
+       */}
+      <div
+        className={`relative lg:sticky lg:top-[116px] lg:z-[2] ${carousel ? "" : "lg:-mt-[396px]"}`}
+      >
+        {carousel ? (
+          <ImageCarousel slides={carousel} />
+        ) : (
+          <ImageSlot
+            brief={image.brief}
+            alt={image.alt}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="h-[clamp(420px,44vw,580px)] shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-md:h-[320px]"
+          />
+        )}
       </div>
     </section>
   );
