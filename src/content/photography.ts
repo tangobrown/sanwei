@@ -20,6 +20,38 @@ export type Photo = {
 };
 
 export const photos: Record<string, Photo> = {
+  // The automotive and marine showcases, likewise from the gallery.
+  "Automotive part 01": {
+    src: "/gallery/sw-149.jpg",
+    alt: "A cam phaser assembly, its toothed ring machined around a splined hub.",
+    fit: "contain",
+  },
+  "Automotive part 02": {
+    src: "/gallery/sw-127.jpg",
+    alt: "A moulded water pipe assembly, curved between two flanged housings.",
+    fit: "contain",
+  },
+  "Automotive part 03": {
+    src: "/gallery/sw-123.jpg",
+    alt: "A cast alloy exhaust elbow with a bolted flange and open spigot.",
+    fit: "contain",
+  },
+  "Marine part 01": {
+    src: "/gallery/sw-121.jpg",
+    alt: "A pressed steel bracket carrying two mounting studs.",
+    fit: "contain",
+  },
+  "Marine part 02": {
+    src: "/gallery/sw-100-use.jpg",
+    alt: "The upper section of a moulded intake manifold, ribbed around a central bore.",
+    fit: "contain",
+  },
+  "Marine part 03": {
+    src: "/gallery/sw-105.jpg",
+    alt: "A mass air flow sensor housing, its mesh screen visible through the bore.",
+    fit: "contain",
+  },
+
   // The audio page's product showcase, drawn from the gallery photographs.
   // They are square shots on white, so they are fitted rather than cropped.
   "Audio part 01": {
