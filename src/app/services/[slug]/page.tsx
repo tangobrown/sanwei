@@ -90,7 +90,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             ))}
           </div>
         ) : null}
-        {detail.listIntro ? <p className="mt-6 text-[15px] font-bold">{detail.listIntro}</p> : null}
+        {detail.listIntro ? (
+          <h3 className="mt-7 font-display text-[20px] leading-[1.3]">{detail.listIntro}</h3>
+        ) : null}
         {detail.list ? (
           /*
            * A list that nests reads as bullets in one column, so a sub-point

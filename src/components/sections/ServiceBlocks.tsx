@@ -33,7 +33,9 @@ export function ServiceDetail({ detail }: { detail: DetailBlock }) {
         </div>
       ) : null}
 
-      {detail.listIntro ? <p className="mt-5 text-[15px] font-bold">{detail.listIntro}</p> : null}
+      {detail.listIntro ? (
+        <h3 className="mt-6 font-display text-[20px] leading-[1.3]">{detail.listIntro}</h3>
+      ) : null}
       {detail.list ? <PanelList items={detail.list} /> : null}
 
       {detail.footnote ? (
