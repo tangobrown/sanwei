@@ -20,6 +20,24 @@ export type Photo = {
 };
 
 export const photos: Record<string, Photo> = {
+  // The audio page's product showcase, drawn from the gallery photographs.
+  // They are square shots on white, so they are fitted rather than cropped.
+  "Audio part 01": {
+    src: "/gallery/sw-22.jpg",
+    alt: "A moulded teardrop speaker pod with a mesh grille set into its face.",
+    fit: "contain",
+  },
+  "Audio part 02": {
+    src: "/gallery/sw-76.jpg",
+    alt: "A machined aluminium cone spike with a knurled locking collar.",
+    fit: "contain",
+  },
+  "Audio part 03": {
+    src: "/gallery/sw-961.jpg",
+    alt: "A coaxial speaker module, its tweeter hinged above the bass driver on a sealed enclosure.",
+    fit: "contain",
+  },
+
   // Homepage hero
   "Factory floor, wide": {
     src: "/photography/line-overview.jpg",
