@@ -57,9 +57,8 @@ export const offices = {
     phone: "+886-2-23466368",
     phoneHref: "tel:+886223466368",
     email: "support@sanwei-asia.com",
-    /** Marker at 25.0325, 121.5718. */
-    mapEmbed:
-      "https://www.openstreetmap.org/export/embed.html?bbox=121.556%2C25.023%2C121.588%2C25.042&layer=mapnik&marker=25.0325%2C121.5718",
+    /** The map is drawn around this point; see OfficeMap for the zoom steps. */
+    center: { lat: 25.0325, lon: 121.5718 },
     mapLink: "https://www.openstreetmap.org/?mlat=25.0325&mlon=121.5718#map=16/25.0325/121.5718",
   },
   uk: {
@@ -69,9 +68,7 @@ export const offices = {
     phone: "+44-1297-631-306",
     phoneHref: "tel:+441297631306",
     email: "uk_office@sanwei-asia.com",
-    /** Marker at 50.7826, -2.9962. */
-    mapEmbed:
-      "https://www.openstreetmap.org/export/embed.html?bbox=-3.020%2C50.770%2C-2.960%2C50.800&layer=mapnik&marker=50.7826%2C-2.9962",
+    center: { lat: 50.7826, lon: -2.9962 },
     mapLink: "https://www.openstreetmap.org/?mlat=50.7826&mlon=-2.9962#map=15/50.7826/-2.9962",
   },
 } as const;

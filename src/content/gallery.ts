@@ -22,6 +22,13 @@ export type GalleryItem = {
   categories: GalleryCategory[];
 };
 
+/**
+ * A reference number customers can quote, fixed to the item's position in the
+ * list above. Append new parts at the end of their category block rather than
+ * inserting among them, or every number after the insertion point shifts.
+ */
+export type NumberedGalleryItem = GalleryItem & { ref: number };
+
 export const galleryItems: GalleryItem[] = [
   // Audio
   { file: "sw-21.jpg", name: "Oval perforated speaker grille", categories: ["Audio"] },
@@ -165,5 +172,15 @@ export const galleryItems: GalleryItem[] = [
   { file: "sw-156.jpg", name: "Machined bearing cap blank", categories: ["Marine"] },
   { file: "sw-157.jpg", name: "Cast housing and exhaust manifold", categories: ["Marine"] },
 ];
+
+export const numberedGalleryItems: NumberedGalleryItem[] = galleryItems.map((item, i) => ({
+  ...item,
+  ref: i + 1,
+}));
+
+/** Zero-padded to the width of the longest number, so the column stays even. */
+export function galleryRef(ref: number) {
+  return String(ref).padStart(String(galleryItems.length).length, "0");
+}
 
 export const GALLERY_PER_PAGE = 20;

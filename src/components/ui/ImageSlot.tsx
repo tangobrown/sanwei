@@ -11,6 +11,8 @@ export type ImageSlotProps = {
   src?: string;
   /** Overrides the registry's alt text. Pass "" for a decorative image. */
   alt?: string;
+  /** Overrides the registry's fit, for a one-off such as the lightbox. */
+  fit?: "cover" | "contain";
   /** Passed to next/image so the browser picks a sensible source width. */
   sizes?: string;
   priority?: boolean;
@@ -23,11 +25,11 @@ export type ImageSlotProps = {
  * brief showing, so outstanding shots stay visible rather than silently
  * becoming empty boxes.
  */
-export function ImageSlot({ brief, src, alt, sizes = "100vw", priority, className = "" }: ImageSlotProps) {
+export function ImageSlot({ brief, src, alt, fit, sizes = "100vw", priority, className = "" }: ImageSlotProps) {
   const photo = getPhoto(brief);
   const resolvedSrc = src ?? photo?.src;
   const resolvedAlt = alt ?? photo?.alt ?? brief;
-  const contain = photo?.fit === "contain";
+  const contain = (fit ?? photo?.fit) === "contain";
 
   if (resolvedSrc) {
     return (

@@ -52,7 +52,7 @@ export default function HomePage() {
           <ImageSlot
             brief="CAD model on screen, close crop"
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-[clamp(320px,34vw,460px)]"
+            className="h-[clamp(380px,42vw,580px)]"
           />
 
           <div className="flex flex-col gap-6">
