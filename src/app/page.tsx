@@ -5,6 +5,7 @@ import { CtaDirectRoutes } from "@/components/sections/CtaDirectRoutes";
 import { ServicesPanel } from "@/components/sections/ServicesPanel";
 import { QuoteCarousel } from "@/components/sections/QuoteCarousel";
 import { ImageTile } from "@/components/ui/ImageTile";
+import { ImageSlot } from "@/components/ui/ImageSlot";
 import { PillLink } from "@/components/ui/Buttons";
 import { clientReferences } from "@/content/site";
 
@@ -46,45 +47,49 @@ export default function HomePage() {
 
         <div className="mb-12 mt-16 w-full border-t border-rule" />
 
-        <div className="flex w-full max-w-[760px] flex-col gap-6">
-          <p className="t-body text-ink-soft">
-            Our factory in Taiwan and extensive Asian sourcing network can supply you with parts that fit your project
-            scope. Whether you know exactly what you need or require some expert advice, our decades of experience, eye
-            for detail and project management know-how will be delivered to you on time and on brief as standard.
-          </p>
-          <p className="t-body text-ink-soft">
-            <Link href="/" className={bodyLink}>
-              Sanwei
-            </Link>{" "}
-            supplies some of the most prestigious{" "}
-            <Link href="/industries/automotive" className={bodyLink}>
-              Automotive
-            </Link>
-            ,{" "}
-            <Link href="/industries/marine" className={bodyLink}>
-              Marine
-            </Link>{" "}
-            and{" "}
-            <Link href="/industries/audio" className={bodyLink}>
-              Audio
-            </Link>{" "}
-            companies around the globe. We work to rigorous quality standards including: IATF16949, ISO9000, ISO14001,
-            AS9100, using APQP, FMEA and SPC. This helps us to ensure critical tasks are completed and PPAP documents
-            are submitted where required, so that you receive superior parts within your budget.
-          </p>
-          <p className="t-body text-ink-soft">
-            Our reputation as a credible supplier speaks for itself &ndash; but don&rsquo;t take our word for it. The
-            customer testimonials below should help to inspire confidence that we can deliver.
-          </p>
-        </div>
+        {/* Photograph left, the copy and its one button right, both left aligned. */}
+        <div className="grid w-full items-center gap-[clamp(32px,5vw,72px)] text-left lg:grid-cols-2">
+          <ImageSlot
+            brief="CAD model on screen, close crop"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="h-[clamp(320px,34vw,460px)]"
+          />
 
-        <div className="mt-12 flex flex-wrap justify-center gap-3">
-          <PillLink href="/why-sanwei" variant="ink" className="px-7 py-[14px]">
-            About us
-          </PillLink>
-          <PillLink href="/process" variant="outline" className="px-7 py-[13px]">
-            Our process
-          </PillLink>
+          <div className="flex flex-col gap-6">
+            <p className="t-body text-ink-soft">
+              Our factory in Taiwan and extensive Asian sourcing network can supply you with parts that fit your project
+              scope. Whether you know exactly what you need or require some expert advice, our decades of experience, eye
+              for detail and project management know-how will be delivered to you on time and on brief as standard.
+            </p>
+            <p className="t-body text-ink-soft">
+              <Link href="/" className={bodyLink}>
+                Sanwei
+              </Link>{" "}
+              supplies some of the most prestigious{" "}
+              <Link href="/industries/automotive" className={bodyLink}>
+                Automotive
+              </Link>
+              ,{" "}
+              <Link href="/industries/marine" className={bodyLink}>
+                Marine
+              </Link>{" "}
+              and{" "}
+              <Link href="/industries/audio" className={bodyLink}>
+                Audio
+              </Link>{" "}
+              companies around the globe. We work to rigorous quality standards including: IATF16949, ISO9000, ISO14001,
+              AS9100, using APQP, FMEA and SPC. This helps us to ensure critical tasks are completed and PPAP documents
+              are submitted where required, so that you receive superior parts within your budget.
+            </p>
+            <p className="t-body text-ink-soft">
+              Our reputation as a credible supplier speaks for itself &ndash; but don&rsquo;t take our word for it. The
+              customer testimonials below should help to inspire confidence that we can deliver.
+            </p>
+
+            <PillLink href="/why-sanwei" variant="ink" className="mt-2 self-start px-7 py-[14px]">
+              About us
+            </PillLink>
+          </div>
         </div>
       </section>
 
