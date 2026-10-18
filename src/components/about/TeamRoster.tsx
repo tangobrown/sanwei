@@ -62,8 +62,8 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
                 aria-controls="team-panel"
                 tabIndex={active ? 0 : -1}
                 onClick={() => setSelected(i)}
-                className={`flex w-full items-baseline gap-5 border-b border-rule py-5 text-left transition-colors duration-[180ms] ${
-                  active ? "text-accent" : "text-ink hover:text-accent"
+                className={`flex w-full items-baseline gap-5 border-b border-rule px-4 py-5 text-left transition-colors duration-[180ms] ${
+                  active ? "bg-paper text-accent" : "text-ink hover:bg-paper-tint hover:text-accent"
                 }`}
               >
                 <span className={`text-[13px] ${active ? "text-accent" : "text-steel"}`}>

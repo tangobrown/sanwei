@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { InteriorHero } from "@/components/sections/InteriorHero";
 import { IntroWithStickyImage } from "@/components/sections/IntroWithStickyImage";
 import { TeamRoster } from "@/components/about/TeamRoster";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { offices } from "@/content/site";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
@@ -111,43 +109,6 @@ export default function WhySanweiPage() {
 
       <TeamRoster members={team} />
 
-      <section className="pad-x border-t border-rule py-20 max-md:py-14 max-sm:py-11">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div className="grid gap-10 sm:grid-cols-2">
-            {[offices.asia, offices.uk].map((office) => (
-              <div key={office.name}>
-                <h2 className="mb-4 font-display text-[28px]">{office.name}</h2>
-                <address className="text-[15px] not-italic leading-[1.75] text-ink-soft">
-                  {office.addressLines.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                  <a href={office.phoneHref} className="block hover:text-accent">
-                    {office.phone}
-                  </a>
-                  <a href={`mailto:${office.email}`} className="block text-accent hover:text-ink">
-                    {office.email}
-                  </a>
-                </address>
-              </div>
-            ))}
-            <div className="sm:col-span-2">
-              <Link
-                href="/contact"
-                className="inline-flex rounded-pill bg-ink px-[30px] py-4 text-[15px] font-semibold text-on-dark transition-colors duration-[180ms] hover:bg-accent"
-              >
-                Contact us
-              </Link>
-            </div>
-          </div>
-          <ImageSlot
-            brief="Map of the Taipei office"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-[360px] border border-rule"
-          />
-        </div>
-      </section>
     </>
   );
 }
