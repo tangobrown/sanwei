@@ -20,6 +20,12 @@ export type Photo = {
 };
 
 export const photos: Record<string, Photo> = {
+  // Prototyping's "Over the years" band.
+  "CNC milling, close crop": {
+    src: "/photography/cnc-milling-tool-block.jpg",
+    alt: "A milling cutter working the cavity of a steel tool block on a machining centre.",
+  },
+
   // Quality Control's two shots.
   "Robotic inspection arm on a part": {
     src: "/photography/robotic-inspection-arm.jpg",
