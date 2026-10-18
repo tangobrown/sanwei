@@ -150,7 +150,7 @@ export function PanelList({ items }: { items: (string | { text: string; items: s
   );
 
   return (
-    <div className="mt-5 grid gap-x-7 gap-y-[10px] sm:grid-cols-2">
+    <div className="mt-6 grid gap-x-7 gap-y-[10px] sm:grid-cols-2">
       {rows.map((row) => (
         <p
           key={row.text}

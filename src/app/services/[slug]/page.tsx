@@ -91,7 +91,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         ) : null}
         {detail.listIntro ? (
-          <h3 className="mt-7 font-display text-[20px] leading-[1.3]">{detail.listIntro}</h3>
+          <h2 className="mt-7 font-display text-[clamp(24px,2.6vw,30px)] leading-[1.2]">{detail.listIntro}</h2>
         ) : null}
         {detail.list ? (
           /*
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
            * them as plain bullets inside its own row, and that list runs in one
            * column so a child never lands in the column beside its parent.
            */
-          <ul className={`mt-3 grid gap-x-7 ${detail.list.every((item) => typeof item === "string") ? "sm:grid-cols-2" : ""}`}>
+          <ul className={`mt-6 grid gap-x-7 ${detail.list.every((item) => typeof item === "string") ? "sm:grid-cols-2" : ""}`}>
             {detail.list.map((item) => {
               const text = typeof item === "string" ? item : item.text;
               return (
