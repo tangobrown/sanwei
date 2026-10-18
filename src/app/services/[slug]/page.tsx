@@ -95,42 +95,29 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         ) : null}
         {detail.list ? (
           /*
-           * A list that nests reads as bullets in one column, so a sub-point
-           * sits under its parent rather than beside an unrelated item. The
-           * flat lists keep the two-column rules they had.
+           * The points keep their rules. A point that carries sub-points holds
+           * them as plain bullets inside its own row, and that list runs in one
+           * column so a child never lands in the column beside its parent.
            */
-          detail.list.some((item) => typeof item !== "string") ? (
-            <ul className="mt-3 list-disc pl-5 text-[15px] leading-[1.6] text-ink-soft marker:text-steel">
-              {detail.list.map((item) => {
-                const text = typeof item === "string" ? item : item.text;
-                return (
-                  <li key={text} className="mb-[6px] pl-1 last:mb-0">
-                    {text}
-                    {typeof item === "string" ? null : (
-                      <ul className="mt-[6px] list-[circle] pl-5">
-                        {item.items.map((child) => (
-                          <li key={child} className="mb-[6px] pl-1 last:mb-0">
-                            {child}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <ul className="mt-3 grid gap-x-7 sm:grid-cols-2">
-              {detail.list.map((item) => (
-                <li
-                  key={String(item)}
-                  className="border-t border-rule py-[10px] text-[15px] leading-[1.5] text-ink-soft"
-                >
-                  {String(item)}
+          <ul className={`mt-3 grid gap-x-7 ${detail.list.every((item) => typeof item === "string") ? "sm:grid-cols-2" : ""}`}>
+            {detail.list.map((item) => {
+              const text = typeof item === "string" ? item : item.text;
+              return (
+                <li key={text} className="border-t border-rule py-[10px] text-[15px] leading-[1.5] text-ink-soft">
+                  {text}
+                  {typeof item === "string" ? null : (
+                    <ul className="mt-2 list-disc pl-5 marker:text-steel">
+                      {item.items.map((child) => (
+                        <li key={child} className="mb-[6px] pl-1 last:mb-0">
+                          {child}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
-              ))}
-            </ul>
-          )
+              );
+            })}
+          </ul>
         ) : null}
         {detail.footnote ? (
           <p className="mt-5 text-[15px] leading-[1.75] text-ink-soft">
