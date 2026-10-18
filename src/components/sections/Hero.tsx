@@ -62,15 +62,18 @@ export function Hero({ eyebrow, title, subline, cta, slides, variant = "page" }:
 
       <div className="hero-scrim pointer-events-none absolute inset-0" />
 
-      <div className="pad-x pointer-events-none absolute inset-x-0 bottom-6 flex flex-col items-start gap-[22px] text-on-dark md:bottom-14">
-        <p className="t-eyebrow text-on-dark-dim">{eyebrow}</p>
-        <h1 className={variant === "home" ? "t-hero-home max-w-[900px]" : "t-hero"}>{title}</h1>
-        {subline ? <p className="t-hero-sub max-w-[660px] text-on-dark-soft">{subline}</p> : null}
-        {cta ? (
-          <PillLink href={cta.href} variant="accent" withArrow className="pointer-events-auto mt-[6px] py-[15px] px-7">
-            {cta.label}
-          </PillLink>
-        ) : null}
+      <div className="pad-x pointer-events-none absolute inset-x-0 bottom-16 text-on-dark md:bottom-14">
+        {/* Held off the full width on a phone, where the eyebrow runs edge to edge. */}
+        <div className="flex flex-col items-start gap-[22px] max-md:w-[85%]">
+          <p className="t-eyebrow text-on-dark-dim">{eyebrow}</p>
+          <h1 className={variant === "home" ? "t-hero-home max-w-[900px]" : "t-hero"}>{title}</h1>
+          {subline ? <p className="t-hero-sub max-w-[660px] text-on-dark-soft">{subline}</p> : null}
+          {cta ? (
+            <PillLink href={cta.href} variant="accent" withArrow className="pointer-events-auto mt-[6px] py-[15px] px-7">
+              {cta.label}
+            </PillLink>
+          ) : null}
+        </div>
       </div>
 
       {slides.length > 1 ? (

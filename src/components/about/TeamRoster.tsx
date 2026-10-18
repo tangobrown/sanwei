@@ -2,18 +2,23 @@
 
 import { useRef, useState } from "react";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { ArrowRight } from "@/components/ui/Icons";
+import { ArrowRight, ChevronDown } from "@/components/ui/Icons";
 import type { TeamMember } from "@/content/team";
 
 /**
- * The team as a roster beside a featured profile, replacing the carousel.
+ * The team, in two shapes.
  *
- * Built as a tablist: each roster row is a tab controlling one panel, with
- * arrow-key navigation and roving tabindex, so the whole section is reachable
- * from the keyboard.
+ * Side by side, it is a tablist: each roster row is a tab controlling one
+ * panel, with arrow-key navigation and roving tabindex.
+ *
+ * Stacked, that would put the open profile a screen below the name you
+ * tapped, so the same roster becomes an accordion and the profile opens
+ * directly under its own row. Only one of the two is in the layout at a
+ * time, and their ids are kept apart.
  */
 export function TeamRoster({ members }: { members: TeamMember[] }) {
   const [selected, setSelected] = useState(0);
+  const [expanded, setExpanded] = useState<number | null>(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const focusTab = (index: number) => {
@@ -48,7 +53,48 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
         </p>
       </div>
 
-      <div className="grid gap-16 lg:grid-cols-[5fr_7fr]">
+      {/* Stacked: an accordion, each profile under the name that opens it. */}
+      <div className="border-t border-ink lg:hidden">
+        {members.map((person, i) => {
+          const open = i === expanded;
+          return (
+            <div key={person.name}>
+              <button
+                type="button"
+                aria-expanded={open}
+                aria-controls={`team-accordion-${i}`}
+                onClick={() => setExpanded(open ? null : i)}
+                className={`flex w-full cursor-pointer items-center gap-5 border-b border-rule px-4 py-5 text-left transition-colors duration-[180ms] ${
+                  open ? "bg-paper text-accent" : "text-ink"
+                }`}
+              >
+                <span className={`text-[13px] ${open ? "text-accent" : "text-steel"}`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="block font-display text-[26px] leading-[1.1]">{person.name}</span>
+                  <span className="mt-1 block text-[11px] uppercase tracking-[0.14em] text-steel">{person.role}</span>
+                </span>
+                <ChevronDown
+                  size={18}
+                  className={`ml-auto shrink-0 transition-transform duration-[180ms] ${
+                    open ? "rotate-180 text-accent" : "text-steel"
+                  }`}
+                />
+              </button>
+
+              {open ? (
+                <div id={`team-accordion-${i}`} className="border-b border-rule px-4 py-8">
+                  <TeamProfile member={person} />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Side by side: the roster chooses, the panel beside it shows. */}
+      <div className="grid gap-16 max-lg:hidden lg:grid-cols-[5fr_7fr]">
         <div role="tablist" aria-label="Sanwei team" aria-orientation="vertical" onKeyDown={onKeyDown} className="border-t border-ink">
           {members.map((person, i) => {
             const active = i === selected;
@@ -95,24 +141,30 @@ export function TeamRoster({ members }: { members: TeamMember[] }) {
           className="motion-safe:animate-fade-up"
           key={selected}
         >
-          {/* Portrait above the profile, in one column: a thumbnail, not a panel. */}
-          <ImageSlot brief={member.brief} sizes="150px" className="mb-8 aspect-[4/5] w-full max-w-[150px]" />
-          <div>
-            <h3 className="font-display text-[40px] leading-[1.1]">{member.name}</h3>
-            <p className="mt-2 text-[12px] uppercase tracking-[0.14em] text-accent">{member.role}</p>
-            <div className="mt-6 flex flex-col gap-4">
-              {member.bio.map((paragraph) => (
-                <p key={paragraph} className="text-[15px] leading-[1.75] text-ink-soft">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <p className="mt-6 border-t border-rule pt-5 font-display text-[16px] italic text-steel">
-              {member.education}
-            </p>
-          </div>
+          <TeamProfile member={member} />
         </div>
       </div>
     </section>
+  );
+}
+
+function TeamProfile({ member }: { member: TeamMember }) {
+  return (
+    <>
+      {/* Portrait above the profile, in one column: a thumbnail, not a panel. */}
+      <ImageSlot brief={member.brief} sizes="150px" className="mb-8 aspect-[4/5] w-full max-w-[150px]" />
+      <div>
+        <h3 className="font-display text-[clamp(30px,4vw,40px)] leading-[1.1]">{member.name}</h3>
+        <p className="mt-2 text-[12px] uppercase tracking-[0.14em] text-accent">{member.role}</p>
+        <div className="mt-6 flex flex-col gap-4">
+          {member.bio.map((paragraph) => (
+            <p key={paragraph} className="text-[15px] leading-[1.75] text-ink-soft">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <p className="mt-6 border-t border-rule pt-5 font-display text-[16px] italic text-steel">{member.education}</p>
+      </div>
+    </>
   );
 }

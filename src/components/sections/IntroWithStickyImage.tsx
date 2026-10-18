@@ -21,20 +21,22 @@ export function IntroWithStickyImage({
   children: ReactNode;
 }) {
   return (
-    <section className="pad-x grid items-start gap-20 bg-white pb-32 pt-24 max-md:gap-10 max-md:pb-16 max-md:pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <section className="pad-x grid items-start gap-20 bg-white pb-32 pt-24 max-lg:gap-10 max-lg:pb-16 max-lg:pt-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div>{children}</div>
 
       {/*
-       * Desktop: pulled up over the hero and sticky beneath the 92px header.
-       * Mobile: neither, so it simply follows the copy.
-       */}
-      {/*
-       * The single shot rises into the hero; the carousel does not. Its
-       * controls would straddle the band edge, and a white panel cutting
-       * across the dark hero reads as a mistake.
+       * Stacked, the photograph leads, so it sits straight under the hero
+       * rather than below a screen of copy.
+       *
+       * Side by side, it is pulled up over the hero and sticks beneath the
+       * 92px header. The carousel is not pulled up: its controls would
+       * straddle the band edge, and a white panel cutting across the dark
+       * hero reads as a mistake.
        */}
       <div
-        className={`relative lg:sticky lg:top-[116px] lg:z-[2] ${carousel ? "" : "lg:-mt-[396px]"}`}
+        className={`relative max-lg:order-first lg:sticky lg:top-[116px] lg:z-[2] ${
+          carousel ? "" : "lg:-mt-[396px]"
+        }`}
       >
         {carousel ? (
           <ImageCarousel slides={carousel} />
@@ -43,7 +45,7 @@ export function IntroWithStickyImage({
             brief={image.brief}
             alt={image.alt}
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-[clamp(420px,44vw,580px)] shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-md:h-[320px]"
+            className="h-[clamp(420px,44vw,580px)] shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-lg:h-[340px]"
           />
         )}
       </div>
