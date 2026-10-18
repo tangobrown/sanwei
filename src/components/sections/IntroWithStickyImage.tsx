@@ -45,7 +45,7 @@ export function IntroWithStickyImage({
             brief={image.brief}
             alt={image.alt}
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-[clamp(420px,44vw,580px)] shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-lg:h-[340px]"
+            className="h-[clamp(420px,44vw,580px)] lg:shadow-[0_30px_60px_rgba(20,30,39,0.22)] max-lg:mb-6 max-lg:h-[340px] max-lg:[margin-inline:calc(var(--gutter)*-1)]"
           />
         )}
       </div>

@@ -106,8 +106,9 @@ export function OfficeMap() {
         </div>
       </div>
 
-      <div className="pad-x sm:hidden">
-        <div className="bg-ink px-6 py-6 text-on-dark">
+      {/* Full width under the map, with a white rule holding it off the footer. */}
+      <div className="sm:hidden">
+        <div className="pad-x border-b border-white bg-ink py-7 text-on-dark">
           <MapCardBody office={office} />
         </div>
       </div>
