@@ -355,7 +355,7 @@ export const services: Service[] = [
     },
     detail: {
       image: "Port, freight and logistics montage",
-      heading: "We can add value to your supply chain by:",
+      listIntro: "We can add value to your supply chain by:",
       list: [
         "Conducting assembly work that reduces labour requirements upon receipt",
         "Shipping to an intermediate country of your choice",
